@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.container {
+	width: 950px;
+	height: auto;
+	background-color: rgba(52, 73, 94, 0.7);
+	border-radius: 4px;
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.text {
+	color: #ffff80;
+	font-style: oblique;
+	font-size: 1.2em;
+	padding-left: 40px;
+}
+
+.text1 {
+	color: #ffffff;
+	font-style: oblique;
+	font-size: 1.3em;
+	padding-left: 40px;
+}
