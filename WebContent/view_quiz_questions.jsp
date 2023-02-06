@@ -53,7 +53,7 @@
 }
 
 .text {
-	color: #ffff80;
+	color: #2F2F2F;
 	font-style: oblique;
 	font-size: 1.2em;
 }
@@ -105,7 +105,7 @@
 																details you wish to view:</legend>
 															<br>
 															<form action="admin_quiz_resultdisplay.jsp" method="post">
-																<br> Username  <input type="text" name="email"><br>
+																<br> Username : <input type="text" name="uname"><br>
 																<br> <input type="submit" value="View">
 
 															</form>

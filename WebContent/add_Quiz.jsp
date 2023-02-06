@@ -24,7 +24,41 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<styel> .space{ margin-left:50%; margin:50px; </styel>
+        <style type="text/css">
+.container {
+	width: 950px;
+	height: 440px;
+	padding-left:80px;
+	padding-top:40px;
+	background-color: rgba(52, 73, 94, 0.7);
+	border-radius: 4px;
+	margin: 0 auto;
+	margin-top: 18px;
+}
 
+.signout {
+	color: green;
+	background: #F1F0D1;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	border-radius: 4px;
+	border: none;
+	border-bottom: 4px solid #27aE60;
+	cursor: pointer;
+	height: 40px;
+	width: 150px;
+	
+}
+.text{
+	color:#ffff80;
+	font-style:oblique;
+	font-size:1.2em;
+	
+}
+</style>
 </head>
 <body style="background-color: #F0F0F0";>
 	<%
@@ -35,8 +69,8 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Add
-					Quiz for students</div>
+					style="text-transform: uppercase">Student action / Add Quiz
+					for students</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {
@@ -58,23 +92,36 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>QUIZ TEST</h4>
+												<div class="space">
+													<nav class="navbar navbar-light bg-light">
+														<b><a class="navbar-brand">QUIZ TEST</a></b>
+														<form class="form-inline">
+															<a href="view_quizDB.jsp"><input type="button"
+																value="View Questions" class="btn btn-info"></a>&emsp;&emsp;
+															<a href="delete_Quiz.jsp"><input type="button"
+																value="Delete Question" class="btn btn-info"></a>
+														</form>
+													</nav>
+
+												</div>
+
 												<hr>
 											</div>
 										</div>
+										<div class="container">
 										<div class="row">
 											<div class="col-md-12">
 												<form action="Quiz" method="post">
 													<div class="form-group row">
-														<label for="quiz_no" class="col-4 col-form-label">Question
-															Number </label>
+														<label for="quiz_no" class="col-4 col-form-label"><b class="text">Question
+															Number </b></label>
 														<div class="col-4">
 															<input type="text" id="quiz_no" name="quiz_no"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
 													</div>
 													<div class="form-group row">
-														<label for="question" class="col-4 col-form-label">QUESTION
+														<label for="question" class="col-4 col-form-label"><b class="text">QUESTION</b>
 														</label>
 														<div class="col-8">
 															<textarea id="question" name="question" placeholder=""
@@ -83,46 +130,47 @@
 														</div>
 													</div>
 													<div class="form-group row">
-														<label for="option1" class="col-4 col-form-label">Option
-															A </label>
+														<label for="option1" class="col-4 col-form-label"><b class="text">Option
+															A </b></label>
 														<div class="col-4">
 															<input type="text" id="option1" name="option1"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
 													</div>
 													<div class="form-group row">
-														<label for="option2" class="col-4 col-form-label">Option
-															B </label>
+														<label for="option2" class="col-4 col-form-label"><b class="text">Option
+															B </b></label>
 														<div class="col-4">
 															<input type="text" id="option2" name="option2"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
 													</div>
 													<div class="form-group row">
-														<label for="option3" class="col-4 col-form-label">Option
-															C </label>
+														<label for="option3" class="col-4 col-form-label"><b class="text">Option
+															C </b></label>
 														<div class="col-4">
 															<input type="text" id="option3" name="option3"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
 													</div>
 													<div class="form-group row">
-														<label for="option4" class="col-4 col-form-label">Option
-															D </label>
+														<label for="option4" class="col-4 col-form-label"><b class="text">Option
+															D </b></label>
 														<div class="col-4">
 															<input type="text" id="option4" name="option4"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
 													</div>
 													<div class="form-group row">
-														<label for="correctAnswer" class="col-4 col-form-label">Correct
-															Answer </label>
+														<label for="correctAnswer" class="col-4 col-form-label"><b class="text">Correct
+															Answer </b></label>
 														<div class="col-8">
 															<div class="form-group row">
-															
+
 																<div class="col-4">
-																	<input type="text" id="correctAnswer" name="correctAnswer"
-																		placeholder="" class="form-control here" value=""></input>
+																	<input type="text" id="correctAnswer"
+																		name="correctAnswer" placeholder=""
+																		class="form-control here" value=""></input>
 																</div>
 															</div>
 														</div>
@@ -131,13 +179,14 @@
 														<label for="notice" class="col-4 col-form-label"></label>
 														<div class="col-8">
 															<input type="submit" value="Add Quiz"
-																class="btn btn-primary"> <input type="reset"
+																class="btn btn-primary">&emsp;&emsp; <input type="reset"
 																value="Reset" class="btn btn-danger">
 														</div>
 													</div>
 
 												</form>
 											</div>
+										</div>
 										</div>
 									</div>
 								</div>

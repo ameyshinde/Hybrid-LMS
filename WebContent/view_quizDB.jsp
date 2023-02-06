@@ -24,16 +24,16 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <style type="text/css">
+<style type="text/css">
 .container {
-	width: 900px;
-	height: 300px;
-	padding-top:50px;
-	padding-left:40%;
+	width: 950px;
+	height: 800px;
+	padding-left:80px;
+	padding-top:40px;
 	background-color: rgba(52, 73, 94, 0.7);
 	border-radius: 4px;
 	margin: 0 auto;
-	margin-top: 0px;
+	margin-top: 18px;
 }
 
 .signout {
@@ -49,10 +49,15 @@
 	cursor: pointer;
 	height: 40px;
 	width: 150px;
-	
+	margin-left: 210px;
 	
 }
-
+.text{
+	color:#ffff80;
+	font-style:oblique;
+	font-size:1.2em;
+	
+}
 </style>
 </head>
 <body style="background-color: #F0F0F0";>
@@ -67,12 +72,12 @@
 					style="text-transform: uppercase">Student action / Add Quiz
 					for students</div>
 				<%
-				String sentquiz = (String) session.getAttribute("quiz-updates");
+				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {
-					session.removeAttribute("quiz-updates");
+					session.removeAttribute("quiz-apply");
 				%>
 				<div class='alert alert-success' id='success'>Quiz
-					Database Updated Succesfully.</div>
+					successfully sent.</div>
 				<%
 				}
 				%>
@@ -91,17 +96,43 @@
 												<hr>
 											</div>
 										</div>
-										<div class="container">
 										<div class="row">
 											<div class="col-md-12">
-												
+												<%
+												Connection connection = DatabaseConnection.getConnection();
+												String query = "select * from quiz";
+												PreparedStatement ps = connection.prepareStatement(query);
+												ResultSet rs = ps.executeQuery();
+												%>
+												<div class="container">
+													<h2 style="color: #ffff80; text-align: center;">Quiz
+														questions database:</h2>
+													<%
+													while (rs.next()) {
+														String sno = rs.getString("quiz_no");
+														String ques = rs.getString("question");
+														String a = rs.getString("option1");
+														String b = rs.getString("option2");
+														String c = rs.getString("option3");
+														String d = rs.getString("option4");
+														String correct = rs.getString("correct_option");
+													%>
+
+													<b class="text">Question <%=sno%>: <%=ques%></b><br> <b
+														class="text">a) <%=a%></b><br> <b class="text">b)
+														<%=b%></b><br> <b class="text">c) <%=c%></b><br> <b
+														class="text">d) <%=d%></b><br> <b class="text">Correct
+														Choice: <%=correct%></b><br>
+													<br>
+
+													<%
+													}
+													connection.close();
+													%>
 													<a href="add_Quiz.jsp"><input type="button"
-														value="Add  Question" class="signout"></a><br>
-													<br> <a href="delete_Quiz.jsp"><input
-														type="button" value="Delete  Question" class="signout"></a><br>
-													<br> <a href="view_quiz_questions.jsp"><input
-														type="button" value="View User Details"
-														class="signout"></a>
+														value="Add Question" class="signout"></a><a
+														href="delete_Quiz.jsp"><input type="button"
+														value="Delete Question" class="signout"></a>
 												</div>
 											</div>
 										</div>

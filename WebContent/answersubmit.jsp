@@ -25,7 +25,28 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var timeLeft = 60; // time in seconds
 
+	function startTimer() {
+		setInterval(function() {
+			if (timeLeft <= 0) {
+				clearInterval();
+				document.getElementById("timer").innerHTML = "Time's up!";
+				document.getElementById("submitButton").click();
+			} else {
+				document.getElementById("timer").innerHTML = timeLeft
+						+ " seconds remaining";
+				timeLeft -= 1;
+				document.getElementById("time").value = timeLeft;
+			}
+		}, 1000);
+	}
+
+	window.onload = function() {
+		startTimer();
+	}
+</script>
 </head>
 <body style="background-color: #F0F0F0";>
 	<%
@@ -59,92 +80,72 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>QUIZ TEST</h4>
+												<h4>QUIZ TEST    <div id="timer"></div></h4>
 												<hr>
 											</div>
-										</div>
-										<%!ArrayList list;
-
+											<%!ArrayList list;
 	int term = 0;
 	int qn = 0;%>
 
-										<%
-										Connection conn = DatabaseConnection.getConnection();
-										Statement statement = conn.createStatement();
-										ResultSet resultset = statement.executeQuery("select count(quiz_no) as totalQuestions from quiz");
-										resultset.next();
-										int count = resultset.getInt("totalQuestions");
+											<%
+											Connection conn = DatabaseConnection.getConnection();
+											String query = "select count(quiz_no) as totalQuestions from quiz";
+											PreparedStatement ps = conn.prepareStatement(query);
+											ResultSet rs = ps.executeQuery();
+											rs.next();
+											int count = rs.getInt("totalQuestions");
+											System.out.println(count);
+											if (term++ == 0) {
+												list = (ArrayList) session.getAttribute("dbdata");
+											}
 
-										if (term++ == 0) {
-											list = (ArrayList) session.getAttribute("dbdata");
-										}
+											if (qn == count) {
+												qn = 0;
+											}
 
-										if (qn == count) {
-											qn = 0;
-										}
-
-										Question q = (Question) list.get(qn++);
-										%>
-										<div class="container">
-											<form method="post" action="saveQuiz">
-												<b style="font-size: 1.2em; color: #567189;"><i> <%
+											Question q = (Question) list.get(qn++);
+											%>
+											<div class="container">
+												<form method="post" action="saveQuiz">
+													<b style="font-size: 1.2em; color: #26408B;"><i> <%
  out.println("Question" + q.getSno() + ". " + q.getQuestion());
  session.setAttribute("sno", q.getSno());
  %>
-												</i></b>
-												<table>
-													<tr>
-														<td style="text-align: right;"><input type="radio"
-															name="myradio" value="<%=q.getAns1()%>"></td>
-														<td><b style="font-size: 1.2em; color: black;"><%=q.getAns1()%></b></td>
-													</tr>
-													<tr>
-														<td style="text-align: right;"><input type="radio"
-															name="myradio" value="<%=q.getAns2()%>"></td>
-														<td><b style="font-size: 1.2em; color: black;"><%=q.getAns2()%></b></td>
-													</tr>
-													<tr>
-														<td style="text-align: right;"><input type="radio"
-															name="myradio" value="<%=q.getAns3()%>"></td>
-														<td><b style="font-size: 1.2em; color: black;"><%=q.getAns3()%></b></td>
-													</tr>
-													<tr>
-														<td style="text-align: right;"><input type="radio"
-															name="myradio" value="<%=q.getAns4()%>"></td>
-														<td><b style="font-size: 1.2em; color: black;"><%=q.getAns4()%></b></td>
-													</tr>
-													<tr>
-														<td style="text-align: right;"><input type="hidden"
-															name="correct" value="<%=q.getCorrect()%>"></td>
-													</tr>
-													<%
-													if (q.getSno() == list.size()) {
-													%>
-													<tr>
-														<td><input type="submit" value="Submit"
-															style="width: 105px;"></td>
-														<td><input type="button" value="Go Back"
-															onclick="history.back()"></td>
-														<br>
-														<td><input type="reset" value="Clear"></td>
-													</tr>
-													<%
-													} else {
-													%>
-													<tr>
-														<td><input type="submit" value="Next Question"></td>
-														<td><input type="button" value="Go Back"
-															onclick="history.back()"></td>
-														<td><input type="reset" value="Clear"></td>
-													</tr>
-													<%
-													}
-													%>
-												</table>
-											</form>
-										</div>
-										<br> <br>
+													</i> </b>
 
+													<table>
+														<tr>
+															<td style="text-align: right;"><input type="radio"
+																name="myradio" value="<%=q.getAns1()%>"></td>
+															<td><b style="font-size: 1.2em; color: black;"><%=q.getAns1()%></b></td>
+														</tr>
+														<tr>
+															<td style="text-align: right;"><input type="radio"
+																name="myradio" value="<%=q.getAns2()%>"></td>
+															<td><b style="font-size: 1.2em; color: black;"><%=q.getAns2()%></b></td>
+														</tr>
+														<tr>
+															<td style="text-align: right;"><input type="radio"
+																name="myradio" value="<%=q.getAns3()%>"></td>
+															<td><b style="font-size: 1.2em; color: black;"><%=q.getAns3()%></b></td>
+														</tr>
+														<tr>
+															<td style="text-align: right;"><input type="radio"
+																name="myradio" value="<%=q.getAns4()%>"></td>
+															<td><b style="font-size: 1.2em; color: black;"><%=q.getAns4()%></b></td>
+														</tr>
+														<tr>
+															<td style="text-align: right;"><input type="hidden"
+																name="correct" value="<%=q.getCorrect()%>"></td>
+														</tr>
+													</table>
+													<input type="hidden" id="time" name="time" value="">
+													<input type="submit" id="submitButton" style="width: 103px;" value="Submit">
+													<input type="reset" value="Clear">
+												</form>
+												<div id="timer"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -153,7 +154,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 	<%
 	} else {

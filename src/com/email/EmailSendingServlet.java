@@ -71,7 +71,7 @@ public class EmailSendingServlet extends HttpServlet {
 			EmailUtility.sendEmail(host, port, user, pass, email, message,
 					uname_password);
 			HttpSession session = request.getSession();
-			resultMessage = "Your login user name & password send successfully in your email.";
+			resultMessage = "Student credentials user name & password send successfully via email.";
 			session.setAttribute("mail-success", resultMessage);
 
 		} catch (Exception ex) {

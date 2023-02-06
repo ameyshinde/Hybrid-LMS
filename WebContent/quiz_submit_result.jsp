@@ -26,7 +26,29 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css">
+.container {
+	width: 960px;
+	height: 300px;
+	padding-left: 40px;
+	background-color: rgba(52, 73, 94, 0.7);
+	border-radius: 4px;
+	margin: 0 auto;
+	margin-top: 10px;
+	padding-top: 38px;
+	padding-left: 340px
+}
 
+.text {
+	color: #ffff80;
+	font-style: oblique;
+	font-size: 1.5em;
+}
+.percent{
+color:#8BC064;
+ont-style: oblique;
+font-size: 1.2em;}
+</style>
 </head>
 <body style="background-color: #F0F0F0";>
 	<%
@@ -64,7 +86,8 @@
 												<hr>
 											</div>
 										</div>
-										<a href="checkoutquiz.jsp"><input type="button" value="Home"
+										<a href="checkoutquiz.jsp"><input type="button"
+											value="Home"
 											style="color: green; background: #F1F0D1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; border-radius: 4px; border: none; border-bottom: 4px solid #27aE60; cursor: pointer; height: 40px; width: 100px; margin-right: 30px;"></a>
 										<a href="viewquizresult.jsp"><input type="button"
 											value="View Detailed Result"
@@ -94,12 +117,16 @@
 												w++;
 											}
 										}
+										Integer time = (Integer) session.getAttribute("time");
 										%>
 										<br> <br>
 										<div class='container'>
-											<b class="text">Total questions = <%=(un + c + w)%><br>Correct
+											<!--  Time taken for last question:
+											<%=60 - time%>
+											seconds -->
+											<br> <b class="text">Total questions = <%=(un + c + w)%><br>Correct
 												answers = <%=c%><br>Wrong answers = <%=(w)%><br>Unattempted
-												Questions=<%=un%><br> <br> <!-- Percentage Calculation -->
+												Questions = <%=un%><br> <br> <!-- Percentage Calculation -->
 												<%
 												double total = (un + c + w);
 												double correct = c;
@@ -109,7 +136,7 @@
 												request.setAttribute("percent", df.format(percent));
 												%>
 
-												<div>
+												<div class="percent">
 													The percentage is:
 													<%=request.getAttribute("percent")%>%
 												</div>
@@ -120,11 +147,7 @@
 										session.setAttribute("temp", temp);
 										conn.close();
 										%>
-										<div class="container"></div>
-										<br> <br>
 									</div>
-									<br> <br>
-
 								</div>
 							</div>
 						</div>

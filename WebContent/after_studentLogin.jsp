@@ -29,13 +29,13 @@
 	%>
 	<jsp:include page="student_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
-		<div class="panel panel-default shadow p-3 mb-5"
+		<div class="panel panel-default shadow p-3 mb-9"
 			style="height: 450px;">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
 					style="text-transform: uppercase">Welcome To Student Portal</div>
-				<div class="well col-lg-12 shadow p-3 mb-5">
-					<img src="images/logo.png" /><br /> <br /> <br />
+				<div class="well col-md-12 shadow p-3 mb-5">
+					<img src="images/newlogo.png"width="500" height="136" /><br /> <br /> <br />
 				</div>
 				<%
 						Connection con = DatabaseConnection.getConnection();

@@ -36,8 +36,8 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Add
-					announcements for students</div>
+					style="text-transform: uppercase">Student action / Quiz Result
+					</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {

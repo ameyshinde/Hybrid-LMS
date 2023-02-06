@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.util.ArrayList; 
 import com.attendance.DatabaseConnection;
+import com.bean.Question;
 
 @WebServlet("/saveQuiz")
 public class saveQuiz extends HttpServlet {
@@ -20,9 +21,20 @@ public class saveQuiz extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		Integer time = (Integer) session.getAttribute("time");
+		if (time == null) {
+		      time = Integer.parseInt(request.getParameter("time"));
+		    } else {
+		      time--;
+		    }
+		    session.setAttribute("time", time);
+		    if (time <= 0) {
+		      response.sendRedirect("quiz_submit_result.jsp");
+		      return;
+		    }
 		String uname = (String) session.getAttribute("uname");
-		System.out.println("The username is :-" +uname);
 		int sno = (Integer) session.getAttribute("sno");
+		System.out.println("The username "+ uname +" is on the question " +sno);
 		String atmt_ans = request.getParameter("myradio");
 		String correct = request.getParameter("correct");
 
@@ -45,8 +57,10 @@ public class saveQuiz extends HttpServlet {
 				st.setString(4, correct);
 			}
 			st.executeUpdate();
-
-			if (sno == 3) {
+			ArrayList<Integer> list = new ArrayList<>();
+			list = (ArrayList) session.getAttribute("dbdata");
+			System.out.println("Current Number of questions in DB " +list.size());
+			if (sno == list.size()) {
 				request.getRequestDispatcher("quiz_submit_result.jsp").forward(request, response);
 			}
 			connection.close();

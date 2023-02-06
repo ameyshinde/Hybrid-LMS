@@ -110,7 +110,7 @@
 														<div class="container">
 															<h1 class="card-title">MCQ TEST</h1>
 															<h2 class="card-title">INSTRUCTIONS:</h2>
-															<b class="text">1. The test contains 10 questions. </b><br>
+															<b class="text">1. Complete the Test in 1 Minute </b><br>
 															<b class="text">2. Each question is of 1 mark.</b><br>
 															<b class="text">3. Only one answer is correct for
 																each question.</b><br> <b class="text">4. The test

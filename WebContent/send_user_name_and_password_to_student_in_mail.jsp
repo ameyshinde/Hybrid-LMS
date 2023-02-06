@@ -45,8 +45,8 @@
 						if (resultMessage != null) {
 							session.removeAttribute("mail-success");
 				%>
-				<div class="alert alert-success" id="success">Your login user
-					name & password send successfully in your email.</div>
+				<div class="alert alert-success" id="success">Student credentials user
+					name & password send successfully via email.</div>
 				<%
 					}
 				%>

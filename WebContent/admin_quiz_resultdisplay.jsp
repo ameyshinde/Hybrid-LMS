@@ -26,13 +26,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
 .container {
-	width: 600px;
-	height: 2020px;
+	width: 900px;
+	height: 800px;
 	padding-left: 20px;
 	background-color: rgba(52, 73, 94, 0.7);
 	border-radius: 4px;
 	margin: 0 auto;
-	margin-top: 40px;
+	margin-top: 0px;
 }
 
 .signout {
@@ -56,6 +56,18 @@
 	color: #ffff80;
 	font-style: oblique;
 	font-size: 1.2em;
+}
+
+.correct {
+	color: green;
+	font-style: oblique;
+	font-size: 1.2em;
+}
+
+.userchoice {
+	color: #064789;
+	font-style: oblique;
+	
 }
 </style>
 </head>
@@ -98,13 +110,13 @@
 										<div class="row">
 											<div class="col-md-12">
 												<%
-												String email = request.getParameter("uname");
+												String uname = request.getParameter("uname");
 												Connection conn = DatabaseConnection.getConnection();
 												String query1 = "select * from quiz order by quiz_no";
 												String query2 = "select * from quiz_answers where username=? order by quiz_no";
 												PreparedStatement ps1 = conn.prepareStatement(query1);
 												PreparedStatement ps2 = conn.prepareStatement(query2);
-												ps2.setString(1, email);
+												ps2.setString(1, uname);
 												ResultSet rs1 = ps1.executeQuery();
 												ResultSet rs2 = ps2.executeQuery();
 												int cnum = 0;
@@ -126,8 +138,10 @@
  		cnum++;
  	}
  %> Question <%=sno%>: <%=ques%><br> a) <%=a%><br> b) <%=b%><br>
-														c) <%=c%><br> d) <%=d%><br> Correct Choice: <%=correct%><br>
-														User's Choice: <%=userans%><br> <br> <%
+														c) <%=c%><br> d) <%=d%><br>
+													<b class="result"> Correct Choice: <%=correct%><br></b>
+														User's Choice: <b class="userchoice"> <%=userans%></b><br>
+														<br> <%
  }
  out.println("Number of correct answers: " + cnum);
  conn.close();

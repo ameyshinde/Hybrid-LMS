@@ -6,7 +6,7 @@
 		
 %>
 	<!-- Brand -->
-	<img src="images/logo.png" width="200px" height="50px" />
+	<img src="images/newlogo.png" width="200px" height="50px" />
 	<a class="navbar-brand" href="after_studentLogin.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;Dashboard</a>
 	<!-- Links -->
 	<ul class="navbar-nav">

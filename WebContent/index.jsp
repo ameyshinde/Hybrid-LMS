@@ -33,10 +33,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body
-	style="background-image: url(images/31.jpg); background-size: 1480px;">
+	style="background-image: url(images/31.jpg); background-size: 1850px;">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<!-- Brand/logo -->
-		<img src="images/logo.png" width="200px" height="40px" /> <a
+		<img src="images/newlogo.png" width="200px" height="40px" /> <a
 			class="navbar-brand" href="student_login.jsp"><strong><span class="glyphicon glyphicon-user"></span>&nbsp;Student Login</strong></a> <a
 			class="navbar-brand" href="index.jsp"><strong><span class="glyphicon glyphicon-user"></span>&nbsp;Admin Login</strong></a> <a
 			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
@@ -52,7 +52,7 @@
 		<!-- Links -->
 	</nav>
 	<div class="container">
-		<img src="images/logo.png" class="rounded float-right"
+		<img src="images/newlogo.png" class="rounded float-right"
 			alt="Cinque Terre" width="400" height="106">
 
 		<div id="loginbox" style="margin-top: 50px;"
