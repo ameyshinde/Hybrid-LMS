@@ -5,7 +5,7 @@
 <%@ page import="java.security.SecureRandom"%>
 <%@ page import="java.util.Random"%>
 <%@page import="java.util.UUID"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,70 +29,74 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style type="text/css">
+.body {
+	background-color: #CAD4D3;
+}
+</style>
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
-	<jsp:include page="student_side_header.jsp"></jsp:include>
+	<jsp:include page="admin_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
+				<div class="alert alert-info shadow p-3 mb-5"
+					style="text-transform: uppercase">Student Course details /
+					Projects</div>
 				<%
-					ResultSet resultset = DatabaseConnection.getResultFromSqlQuery(
-								"select count(*) from notice");
-						resultset.next();
-						int count = resultset.getInt(1);
+				String getreport = (String) session.getAttribute("lmsg");
+				if (getreport != null) {
+					
+					session.removeAttribute("lmsg");
 				%>
-				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">Student Course details / Announcements
-					</div>
-				<div class="panel panel-secondary shadow p-3 mb-5">
-					<div class="panel-heading">
-						<strong>Announcements</strong>&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;<a
-							class="btn btn-warning" href=""><span class="badge"><%=count%></span>
-							Notification</a>
-					</div>
-					<div class="panel-body">
-						<form action="" method="post">
-							<table id="table" class="table table-bordered">
-								<thead>
-									<tr>
-										<th>Notice Id</th>
-										<th>Subject</th>
-										<th>Message</th>
-										<th>Sender</th>
-										<th>Notice Date</th>
-									</tr>
-								</thead>
-								<tbody>
-									<%
-										ResultSet rs = DatabaseConnection
-													.getResultFromSqlQuery("select * from notice");
-											while (rs.next()) {
-									%>
-									<tr>
-										<td><%=rs.getInt(1)%></td>
-										<td><%=rs.getString(2)%></td>
-										<td><label style='color: #33b5e5;'><%=rs.getString(3)%></label></td>
-										<td><%=rs.getString(4)%></td>
-										<td><span class="label label-warning"><%=rs.getDate(5)%></span></td>
-									</tr>
-
-									<%
-										}
-									%>
-								</tbody>
-							</table>
-						</form>
+				<div class='alert alert-danger' id='danger'> No Project Report
+					Details Found.</div>
+				<%
+				} 
+				%>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="body">
+								<div class="card-body">
+									<div class="row">
+										<div class="container">
+											<div class="row">
+												<div class="col-md-4"></div>
+												<div class="col-md-4">
+													<form class="form-inline" action="viewreport">
+														<div class="form-group mx-sm-3 mb-2 mr-2">
+															<select class="form-select form-select-sm" name="phase">
+																<option selected value="1">Phase One</option>
+																<option value="2">Phase Two</option>
+																<option value="3">Phase Three</option>
+															</select>
+														</div>
+														<button type="submit" class="btn btn-primary mb-2 ml-2">View
+															Report</button>
+													</form>
+												</div>
+												<div class="col-md-4"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	</div>
+	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 </body>
 <script src="js/jquery-3.1.1.js"></script>

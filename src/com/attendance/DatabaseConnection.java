@@ -5,7 +5,10 @@ import java.sql.*;
 import java.util.Random;
 
 public class DatabaseConnection {
+	 
+	
 	static Connection con;
+	public static DatabaseConnection db;
 
 	public static Connection getConnection() throws Exception {
 		Class.forName("com.mysql.cj.jdbc.Driver");

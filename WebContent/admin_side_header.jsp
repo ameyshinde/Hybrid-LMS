@@ -58,6 +58,15 @@
 				<a class="dropdown-item" href="rejected_student_leave_request.jsp">Rejected Request</a>
 			</div>
 		</li>
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbardrop" data-toggle="dropdown">Project Management</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="pending">Show Pending Project Approvals</a>
+				<a class="dropdown-item" href="approved">Show Approved Projects</a>
+				<a class="dropdown-item" href="rejected">Show Rejected Projects</a>
+				<a class="dropdown-item" href="showallprojects">Show All Projects</a>
+			</div>
+		</li>
 		<li class="nav-item"><a class="nav-link" href="all_sas_pdf_report.jsp">Reports</a></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbardrop" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>&nbsp;<%=session.getAttribute("uname")%></a>
