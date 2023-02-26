@@ -23,7 +23,7 @@ public class StudentQuery extends HttpServlet {
 			int inquiry_id = 0;
 			HttpSession session = request.getSession();
 			String uname = (String) session.getAttribute("uname");
-			String name = request.getParameter("name");
+			String name = (String) session.getAttribute("StudentName");
 			String mobile = request.getParameter("mobile");
 			String email = request.getParameter("email");
 			String message = request.getParameter("message");

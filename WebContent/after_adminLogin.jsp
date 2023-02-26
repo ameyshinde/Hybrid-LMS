@@ -195,7 +195,7 @@
 					</div>
 				</div>
 				<div style="text-transform: uppercase">
-					<strong>Attendance System All Reports &nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]
+					<strong> LMS All Reports &nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]
 					</strong>
 				</div>
 				<br>

@@ -52,20 +52,20 @@ public class ForgetAdminPassword extends HttpServlet {
 				uname_password = "Hi " + uname + "," + System.lineSeparator() + System.lineSeparator()
 						+ "Your Admin Login Portal" + System.lineSeparator() + "User Name: " + uname
 						+ System.lineSeparator() + "Password: " + password + System.lineSeparator()
-						+ System.lineSeparator() + "Thank you." + System.lineSeparator() + "Student Attendance Team.";
+						+ System.lineSeparator() + "Thank you." + System.lineSeparator() + "Hybrid LMS Team.";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		String message = "Student Attendance System.";
+		String message = "Hybrid LMS.";
 		// String content = request.getParameter("content");
 		String resultMessage = "";
 
 		PrintWriter out = response.getWriter();
 		try {
 
-			EmailUtility.sendEmail(host, port, "attendancesystem33@gmail.com", "java@1992", email, message,
+			EmailUtility.sendEmail(host, port, "bharatshinde7992@gmail.com", "gtmrlpucliujvxvy", email, message,
 					uname_password);
 			HttpSession session = request.getSession();
 			resultMessage = "Your login user name & password send successfully in your email.";

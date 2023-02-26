@@ -33,7 +33,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body
-	style="background-image: url(images/undraw_teacher.svg); background-repeat: no-repeat;background-size:1450px;">
+	style="background-image: url(images/undraw_teacher.svg);background-position:left 30px;background-position-y: 120px ;background-repeat: no-repeat;">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<!-- Brand/logo -->
 		<img src="images/newlogo.png" width="200px" height="50px" />

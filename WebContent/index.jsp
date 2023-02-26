@@ -31,23 +31,34 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="shortcut icon"
+	href="/WebContent/images/icons8-classroom-96.png" type="image/x-icon" />
+<link rel="icon" href="/WebContent/images/icons8-classroom-96.png"
+	type="image/x-icon">
+<link rel="icon"
+	href="${pageContext.request.contextPath}/WebContent/images/icons8-classroom-96.png" />
 </head>
 <body
 	style="background-image: url(images/31.jpg); background-size: 1850px;">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<!-- Brand/logo -->
-		<img src="images/newlogo.png" width="200px" height="40px" /> <a
-			class="navbar-brand" href="student_login.jsp"><strong><span class="glyphicon glyphicon-user"></span>&nbsp;Student Login</strong></a> <a
-			class="navbar-brand" href="index.jsp"><strong><span class="glyphicon glyphicon-user"></span>&nbsp;Admin Login</strong></a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a><a class="navbar-brand" href="">&nbsp;</a><a
-			class="navbar-brand" href=""><strong><%=(new java.util.Date()).toLocaleString()%></strong></a>
+		<img src="images/newlogo.png" width="200px" height="50px" />
+		&emsp;&emsp;&emsp; <a href="student_login.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&emsp;Student Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a href="faculty_login.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&nbsp;Faculty Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a href="index.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&emsp;Admin Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a> <a class="navbar-brand"
+			href="">&emsp;</a> <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a> <a class="navbar-brand"
+			href="">&emsp;</a> <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a><a class="navbar-brand"
+			href="">&emsp;</a><a class="navbar-brand" href=""><strong><%=(new java.util.Date()).toLocaleString()%></strong></a>
 
 		<!-- Links -->
 	</nav>
@@ -65,24 +76,24 @@
 					<h5>Please login to admin account</h5>
 					<br>
 					<%
-						String credential = (String) session.getAttribute("credential");
-						if (credential != null) {
-							session.removeAttribute("credential");
+					String credential = (String) session.getAttribute("credential");
+					if (credential != null) {
+						session.removeAttribute("credential");
 					%>
 					<div class="alert alert-danger" id="danger">You have enter
 						wrong credentials.</div>
 					<%
-						}
+					}
 					%>
 					<%
-						String adminRegister = (String) session.getAttribute("message-success");
-						if (adminRegister != null) {
-							session.removeAttribute("message-success");
+					String adminRegister = (String) session.getAttribute("message-success");
+					if (adminRegister != null) {
+						session.removeAttribute("message-success");
 					%>
 					<div class="alert alert-success" id="success">Account
 						register successfully.</div>
 					<%
-						}
+					}
 					%>
 					<div style="display: none" id="login-alert"
 						class="alert alert-danger col-sm-12"></div>
@@ -90,8 +101,9 @@
 						action="AdminLogin" method="post">
 						<label>User Name</label>
 						<div style="margin-bottom: 15px" class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user">&nbsp;</i></span> <input
+							<span class="input-group-addon">
+							<i
+								class="glyphicon glyphicon-user"></i></span>&nbsp;<input
 								id="login-username" type="text" class="form-control"
 								name="uname" value="" placeholder="User Name"
 								style="height: 30px;">
@@ -112,7 +124,8 @@
 									<span class="glyphicon glyphicon-log-in"></span> Login
 								</button>
 								<input type="reset" value="Reset" class="btn btn-danger btn-lg">
-								<a href="forgetPassword.jsp" class="btn btn-link"> Forget your password </a>
+								<a href="forgetPassword.jsp" class="btn btn-link"> Forget
+									your password </a>
 							</div>
 						</div>
 						<div class="form-group">

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -31,22 +31,28 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body style="background-image:url(images/banner-student-home.jpg);background-size:1480px;">
+<body style="background-image:url(images/studentbg_cleanup.jpg);  background-repeat: no-repeat;  
+  background-position: 0% 0%; height: 100vh;
+  background-size: 100% 100%">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<!-- Brand/logo -->
-		<img src="images/newlogo.png" width="200px" height="40px" /> <a
-			class="navbar-brand " href="student_login.jsp"><strong><span class="glyphicon glyphicon-user"></span>&nbsp;Student Login</strong></a> <a
-			class="navbar-brand" href="index.jsp"><strong><span class="glyphicon glyphicon-user"></span>&nbsp;Admin Login</strong></a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a><a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href=""><strong><%=(new java.util.Date()).toLocaleString()%></strong></a>
-
+		<img src="images/newlogo.png" width="200px" height="50px" />
+		&emsp;&emsp;&emsp; <a href="student_login.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&emsp;Student Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a href="faculty_login.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&nbsp;Faculty Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a href="index.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&emsp;Admin Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a> <a class="navbar-brand"
+			href="">&emsp;</a> <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a> <a class="navbar-brand"
+			href="">&emsp;</a> <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a><a class="navbar-brand"
+			href="">&emsp;</a><a class="navbar-brand" href=""><strong><%=(new java.util.Date()).toLocaleString()%></strong></a>
 		<!-- Links -->
 	</nav>
 	<div class="container">

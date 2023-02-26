@@ -35,7 +35,7 @@
 			resultset.next();
 			int count = resultset.getInt(1);
 	%>
-	<jsp:include page="admin_side_header.jsp"></jsp:include>
+	<jsp:include page="faculty_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">

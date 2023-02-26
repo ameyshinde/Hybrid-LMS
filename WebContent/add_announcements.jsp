@@ -25,24 +25,26 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
-	<jsp:include page="admin_side_header.jsp"></jsp:include>
+	<jsp:include page="faculty_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">Student action / Add announcements for students</div>
+				<div class="alert alert-info shadow p-3 mb-5"
+					style="text-transform: uppercase">Student action / Add
+					announcements for students</div>
 				<%
-					String sentnotice = (String) session.getAttribute("notice-apply");
-						if (sentnotice != null) {
-							session.removeAttribute("notice-apply");
+				String sentnotice = (String) session.getAttribute("notice-apply");
+				if (sentnotice != null) {
+					session.removeAttribute("notice-apply");
 				%>
-				<div class='alert alert-success' id='success'>Announcement successfully
-					sent.</div>
+				<div class='alert alert-success' id='success'>Announcement
+					successfully sent.</div>
 				<%
-					}
+				}
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
@@ -62,9 +64,9 @@
 										<div class="row">
 											<div class="col-md-12">
 												<form action="Announcements" method="post">
-												<div class="form-group row">
+													<div class="form-group row">
 														<label for="subject" class="col-4 col-form-label">Subject
-															</label>
+														</label>
 														<div class="col-8">
 															<textarea id="subject" name="subject" placeholder=""
 																class="form-control here" type="textarea" value=""
@@ -72,26 +74,12 @@
 														</div>
 													</div>
 													<div class="form-group row">
-														<label for="notice" class="col-4 col-form-label">Notice
-															</label>
+														<label for="notice" class="col-4 col-form-label">Message
+														</label>
 														<div class="col-8">
 															<textarea id="notice" name="notice" placeholder=""
 																class="form-control here" type="textarea" value=""
 																rows="4" cols="30"></textarea>
-														</div>
-													</div>
-													<div class="form-group row">
-														<label for="sender" class="col-4 col-form-label">Sender
-															</label>
-														<div class="col-8">
-															<select id="sender" name="sender" class="form-control here"
-																value="">
-																<option>Professor</option>
-																<option>HOD</option>
-																<option>Coordinator</option>
-																<option>Principal</option>
-																<option>Other</option>
-															</select>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -116,9 +104,9 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 </body>
 <script type="text/javascript">

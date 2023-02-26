@@ -17,14 +17,9 @@
 			<div class="dropdown-menu">
 				<a class="dropdown-item" href="students_announcement.jsp">Student
 					Announcement/Notification</a> <a class="dropdown-item"
-					href="checkoutquiz.jsp">Student Available Test</a> <a
-					class="dropdown-item" href="students-project_dashboard.jsp">Add
-					Project Details</a>
+					href="checkoutquiz.jsp">Student Available Test</a> 
+					<!-- <a class="dropdown-item" href="students-project_dashboard.jsp">Add Project Details</a> -->
 			</div></li>
-		<li class="nav-item"><a class="nav-link"
-			href="student_profile.jsp">Student Profile</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="change_student_password.jsp">Change Password</a></li>
 		<li class="nav-item"><a class="nav-link"
 			href="check_own_attendance.jsp">Attendance Report</a></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
@@ -37,9 +32,8 @@
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbardrop" data-toggle="dropdown">Projects Section</a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="add_project_details.jsp">Add Project
-					Details</a> <a class="dropdown-item" href="showmyprojects">Show
-					My Projects</a><a class="dropdown-item" href="leave_status_report.jsp">Search 
+				<a class="dropdown-item" href="add_project_details.jsp">Add
+					Project Details</a> <a class="dropdown-item" href="showmyprojects">Show
 					My Projects</a>
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
@@ -56,7 +50,11 @@
 			href="#" id="navbardrop" data-toggle="dropdown"><span
 				class="glyphicon glyphicon-user"></span> <%=session.getAttribute("uname")%></a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="logout.jsp">Logout</a>
+				<a class="dropdown-item" href="student_profile.jsp"><span
+					class="glyphicon glyphicon-user"></span> My Profile</a> <a
+					class="dropdown-item" href="change_student_password.jsp"><span
+					class="glyphicon glyphicon-edit"></span> Change Password</a> <a
+					class="dropdown-item" href="logout.jsp">Logout</a>
 			</div></li>
 		<!-- Dropdown -->
 	</ul>

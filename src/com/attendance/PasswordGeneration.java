@@ -23,6 +23,8 @@ public class PasswordGeneration extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String url = request.getRequestURI();
+		if(url.endsWith("PasswordGeneration")) {
 		ResultSet resultset = DatabaseConnection.getResultFromSqlQuery("select * from students");
 		try {
 			HttpSession hs = request.getSession();
@@ -38,7 +40,24 @@ public class PasswordGeneration extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
+		else if(url.endsWith("passwordfaculty")) {
+		ResultSet rs = DatabaseConnection.getResultFromSqlQuery("select * from faculty");
+		try {
+			HttpSession hs = request.getSession();
+			while (rs.next()) {
+				String password = DatabaseConnection.randompasswordgeneration();
+				DatabaseConnection.insertUpdateFromSqlQuery("update faculty set password='" + password
+						+ "' where teacher_id='" + rs.getInt(1) + "' ");
+				String message = "System generated all faculty password successfully.";
+				hs.setAttribute("message-success", message);
+			}
+			response.sendRedirect("faculty_password_view.jsp");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-	}
+	}}
 
 }

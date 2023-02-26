@@ -56,13 +56,13 @@ public class EmailSendingServlet extends HttpServlet {
 				uname_password = "Hi " + uname + "," + System.lineSeparator() + System.lineSeparator()
 						+ "Your Student Login Portal" + System.lineSeparator() + "User Name: " + uname
 						+ System.lineSeparator() + "Password: " + password + System.lineSeparator()
-						+ System.lineSeparator() + "Thank you." + System.lineSeparator() + "Student Attendance Team.";
+						+ System.lineSeparator() + "Thank you." + System.lineSeparator() + "Hybrid LMS Team.";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		String message = "Student Attendance System.";
+		String message = "Hybrid Learning Management System.";
 		// String content = request.getParameter("content");
 		String resultMessage = "";
 

@@ -19,10 +19,10 @@ public class Announcements extends HttpServlet{
 			throws ServletException, IOException {
 		int id = 0;
 		HttpSession session = request.getSession();
-		//String name = (String) session.getAttribute("StudentName");
+		String name = (String) session.getAttribute("uname");
 		String subject = request.getParameter("subject");
 		String notice = request.getParameter("notice");
-		String sender = request.getParameter("sender");
+		String sender = name;
 		try {
 			Connection connection = DatabaseConnection.getConnection();
 			Statement statement = connection.createStatement();

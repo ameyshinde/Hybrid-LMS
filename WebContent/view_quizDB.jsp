@@ -27,7 +27,7 @@
 <style type="text/css">
 .container {
 	width: 950px;
-	height: 800px;
+	height: 1200px;
 	padding-left:80px;
 	padding-top:40px;
 	background-color: rgba(52, 73, 94, 0.7);
@@ -64,12 +64,12 @@
 	<%
 	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
-	<jsp:include page="admin_side_header.jsp"></jsp:include>
+	<jsp:include page="faculty_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Add Quiz
+					style="text-transform: uppercase">Student action / View Quiz
 					for students</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");

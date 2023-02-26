@@ -13,7 +13,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
 	rel="stylesheet">
 <style type="text/css">
 </style>
@@ -31,44 +32,50 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<!-- Brand/logo -->
-		<img src="images/logo.png" width="200px" height="50px" /> <a
-			class="navbar-brand" href="index.jsp">Student Attendance System</a> <a
-			class="navbar-brand" href="student_login.jsp">Student Login</a> <a
-			class="navbar-brand" href="index.jsp">Admin Login</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a> <a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-			href="">&nbsp;</a><a class="navbar-brand" href="">&nbsp;</a> <a
-			class="navbar-brand" href=""><%=(new java.util.Date()).toLocaleString()%></a>
+		<img src="images/newlogo.png" width="200px" height="50px" />
+		&emsp;&emsp;&emsp; <a href="student_login.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&emsp;Student Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a href="faculty_login.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&nbsp;Faculty Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a href="index.jsp"
+			class="btn btn-info btn-lg"> <strong><span
+				class="glyphicon glyphicon-user"></span>&emsp;Admin Login </strong>
+		</a> &emsp;&emsp;&emsp;&emsp; <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a> <a class="navbar-brand"
+			href="">&emsp;</a> <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a> <a class="navbar-brand"
+			href="">&emsp;</a> <a class="navbar-brand" href="">&emsp;</a> <a
+			class="navbar-brand" href="">&emsp;</a><a class="navbar-brand"
+			href="">&emsp;</a><a class="navbar-brand" href=""><strong><%=(new java.util.Date()).toLocaleString()%></strong></a>
 
 		<!-- Links -->
 	</nav>
 	<div class="container">
-		<img src="images/logo.png" " class="rounded" alt="Cinque Terre"
-			width="400" height="106">
+		<img src="images/newlogo.png" " class="rounded" alt="Cinque Terre"
+			width="400" height="116">
 		<div id="loginbox" style="margin-top: 50px;"
 			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title" style="text-transform: uppercase">Forget Password</div>
+					<div class="panel-title" style="text-transform: uppercase">Forget
+						Password</div>
 				</div>
 
 				<div style="padding-top: 30px" class="panel-body">
 					<%
-						String success = (String) session.getAttribute("mail-success");
-						if (success != null) {
-							session.removeAttribute("mail-success");
+					String success = (String) session.getAttribute("mail-success");
+					if (success != null) {
+						session.removeAttribute("mail-success");
 					%>
-					<div class="alert alert-success" id="success">Your login user name & password send successfully in your email.</div>
+					<div class="alert alert-success" id="success">Your login user
+						name & password send successfully in your email.</div>
 					<%
-						}
+					}
 					%>
 					<div style="display: none" id="login-alert"
 						class="alert alert-danger col-sm-12"></div>
@@ -77,9 +84,9 @@
 						action="ForgetAdminPassword" method="post">
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-envelope"></i> </span> <input id="login-email"
-								type="email" class="form-control" name="email" value=""
-								placeholder="Enter your email id" style="height: 30px;">
+								class="glyphicon glyphicon-envelope"></i> </span> <input
+								id="login-email" type="email" class="form-control" name="email"
+								value="" placeholder="Enter your email id" style="height: 30px;">
 						</div>
 						<div style="margin-top: 10px" class="form-group">
 							<!-- Button -->

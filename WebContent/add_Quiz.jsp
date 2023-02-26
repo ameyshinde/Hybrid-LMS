@@ -64,7 +64,7 @@
 	<%
 	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
-	<jsp:include page="admin_side_header.jsp"></jsp:include>
+	<jsp:include page="faculty_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default">
 			<div class="panel-body">

@@ -22,7 +22,7 @@ public class StudentFeedback extends HttpServlet {
 		int fid = 0;
 		HttpSession session = request.getSession();
 		String uname = (String) session.getAttribute("uname");
-		String full_name = request.getParameter("full_name");
+		String full_name = (String) session.getAttribute("StudentName");
 		String mobile = request.getParameter("mobile");
 		String feedback = request.getParameter("message");
 		try {

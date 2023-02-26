@@ -65,14 +65,14 @@
 										<div class="row">
 											<div class="col-md-12">
 												<form action="StudentFeedback" method="post">
-													<div class="form-group row">
+												<!-- 	<div class="form-group row">
 														<label for="full_name" class="col-4 col-form-label">Full
 															Name </label>
 														<div class="col-8">
 															<input id="full_name" name="full_name" placeholder=""
 																class="form-control here" type="text" value="">
 														</div>
-													</div>
+													</div>  -->
 													<div class="form-group row">
 														<label for="mobile" class="col-4 col-form-label">Mobile
 															No </label>
@@ -86,7 +86,7 @@
 														<div class="col-8">
 															<textarea id="message" name="message" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="4" cols="30"></textarea>
+																rows="4" cols="30" required></textarea>
 														</div>
 													</div>
 													<div class="form-group row">
