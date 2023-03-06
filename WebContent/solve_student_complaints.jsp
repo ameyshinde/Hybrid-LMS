@@ -7,8 +7,8 @@
 	try {
 		Connection con = DatabaseConnection.getConnection();
 		Statement st = con.createStatement();
-		int rejectAttendance = st.executeUpdate("update inquiry set message='We will check and solve or update your issue' where inquiry_id='" + id + "'");
-		if (rejectAttendance > 0) {
+		int solvequery = st.executeUpdate("update inquiry set message='We will check and solve or update your issue' where inquiry_id='" + id + "'");
+		if (solvequery > 0) {
 			response.sendRedirect("students_notification.jsp");
 		} else {
 			response.sendRedirect("students_notification.jsp");

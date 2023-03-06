@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -46,51 +46,50 @@
 				<div class="alert alert-info shadow p-3 mb-5"
 					style="text-transform: uppercase">Student Course details /
 					Projects</div>
-					<%
+				<%
 				String sentproject = (String) session.getAttribute("msg");
 				if (sentproject != null) {
 					session.removeAttribute("msg");
 				%>
-				<div class='alert alert-success' id='success'>Project Report 
+				<div class='alert alert-success' id='success'>Project Report
 					successfully sent.</div>
 				<%
 				}
 				%>
-				
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="body">
-									<div class="card-body">
-										<div class="row">
-												<div class="container">
-													<div class="row">
-														<div class="col-md-4"></div>
-														<div class="col-md-4">
-															<form class="form" action="addreport" method="post"
-																enctype="multipart/form-data">
-																<div class="form-group mx-sm-10 ">
-																	<select class="form-select form-select-sm" name="phase" required>
-																		<option selected value="1">Phase One</option>
-																		
-																		<option value="2">Phase Two</option>
-																		<option value="3">Phase Three</option>
-																	</select>
-																</div>
-																<div class="form-group">
-																	<input type="file" name="reportfile" id="reportfile"
-																		required />
-																</div>
-															<button type="submit" class="btn btn-primary mb-4 ml-2">Add
-																	Report</button>
-															</form>
 
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="body">
+								<div class="card-body">
+									<div class="row">
+										<div class="container">
+											<div class="row">
+												<div class="col-md-4"></div>
+												<div class="col-md-4">
+													<form class="form" action="addpmreport" method="post"
+														enctype="multipart/form-data">
+														<div class="form-group mx-sm-10 ">
+															<select class="form-select form-select-sm" name="phase"
+																required>
+																<option selected value="1">Phase One</option>
+
+																<option value="2">Phase Two</option>
+																<option value="3">Phase Three</option>
+															</select>
 														</div>
-														<div class="col-md-4"></div>
-													</div>
+														<div class="form-group">
+															<input type="file" name="reportfile" id="reportfile"
+																required />
+														</div>
+														<button type="submit" class="btn btn-primary mb-4 ml-2">Add
+															Report</button>
+													</form>
 
 												</div>
+												<div class="col-md-4"></div>
 											</div>
+
 										</div>
 									</div>
 								</div>
@@ -100,6 +99,8 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 	<%
 	} else {

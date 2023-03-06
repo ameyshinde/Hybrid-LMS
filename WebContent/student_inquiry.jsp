@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -58,38 +58,15 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>Inquiry Or Any Query For Updation</h4>
+												<h4>Complaint Or Any Query For Updation</h4>
 												<hr>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-12">
 												<form action="StudentQuery" method="post">
-												<!--  	<div class="form-group row">
-														<label for="name" class="col-4 col-form-label">Full
-															Name </label>
-														<div class="col-8">
-															<input id="name" name="name" placeholder=""
-																class="form-control here" type="text" value="">
-														</div>
-													</div> -->
 													<div class="form-group row">
-														<label for="mobile" class="col-4 col-form-label">Mobile
-															No </label>
-														<div class="col-8">
-															<input id="mobile" name="mobile" placeholder=""
-																class="form-control here" type="text" value="">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label for="email" class="col-4 col-form-label">Email</label>
-														<div class="col-8">
-															<input id="email" name="email" placeholder=""
-																class="form-control here" type="text" value="">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label for="message" class="col-4 col-form-label">Inquiry
+														<label for="message" class="col-4 col-form-label">Complaint
 															Or Query for Updation</label>
 														<div class="col-8">
 															<textarea id="message" name="message" placeholder=""

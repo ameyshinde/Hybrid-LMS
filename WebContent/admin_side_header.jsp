@@ -33,6 +33,7 @@
 				<a class="dropdown-item" href="faculty_data.jsp">Edit Faculty Information</a>
 				<a class="dropdown-item" href="manage_faculty.jsp">Faculty Activation / Deactivation</a>
 				<a class="dropdown-item" href="remove_faculty.jsp">Remove Faculty / Multiple Faculty</a> 
+				<a class="dropdown-item" href="faculty_feedback_informations.jsp">Faculty Feedbacks</a>
 				<a class="dropdown-item" href="faculty_password_view.jsp">All Faculty Password Generation</a> 
 				<a class="dropdown-item" href="faculty_individual_password_generation.jsp">Faculty Password Generation Individually</a>
 				<a class="dropdown-item" href="send_usrname_pass_to_faculty_in_mail.jsp">Send User Name & Password to Faculty</a>
@@ -43,6 +44,7 @@
 				Actions </a>
 				<div class="dropdown-menu">
 				<a class="dropdown-item" href="add_admin_announcements.jsp">Add Announcements</a>
+				<a class="dropdown-item" href="allocate_faculty.jsp">Allocate Faculty</a>
 				
 				
 			</div></li>

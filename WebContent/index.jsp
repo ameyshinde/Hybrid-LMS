@@ -103,7 +103,7 @@
 						<div style="margin-bottom: 15px" class="input-group">
 							<span class="input-group-addon">
 							<i
-								class="glyphicon glyphicon-user"></i></span>&nbsp;<input
+								class="glyphicon glyphicon-user"></i></span><input
 								id="login-username" type="text" class="form-control"
 								name="uname" value="" placeholder="User Name"
 								style="height: 30px;">

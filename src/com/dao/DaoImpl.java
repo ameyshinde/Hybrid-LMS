@@ -1,15 +1,18 @@
 package com.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.attendance.DatabaseConnection;
 import com.bean.MyProject;
+import com.bean.Notes;
 import com.bean.Student;
 import com.bean.ProjectReport;
 
@@ -327,6 +330,53 @@ public class DaoImpl implements Dao{
 		}
 		return null;
 	}
+	@Override
+	public ResultSet getNotes(String fileName) {
+		String sql = "Select file from notes where FileName = ?";
+		Connection con = null;
+		try {
+			con = DatabaseConnection.getConnection();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			pst = con.prepareStatement(sql);
+			pst.setString(1, fileName);
+			//pst.setString(2, title);
+			rs = pst.executeQuery();
+			return rs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public boolean addNotes(Notes notes) {
+		String sql = "INSERT INTO notes (Subject_code,Subject,FileName,Filetype,Upload_date,file) VALUES (?,?,?,?,?,?)";
+		
+		Connection con = null;
+		try {
+			con = DatabaseConnection.getConnection();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			pst = con.prepareStatement(sql);
+			pst.setString(1, notes.getSubjectcode());
+			pst.setString(2, notes.getSubject());
+			pst.setString(3, notes.getFilename());
+			pst.setString(4, notes.getFiletype());
+			pst.setDate(5,  notes.getCurrentDate());
+			pst.setBytes(6, notes.getNotes());
+			int rows = pst.executeUpdate();
+			return rows == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	} 
 
 }  
 

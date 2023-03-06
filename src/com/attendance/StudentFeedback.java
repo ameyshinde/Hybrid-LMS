@@ -3,6 +3,7 @@ package com.attendance;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,15 +24,20 @@ public class StudentFeedback extends HttpServlet {
 		HttpSession session = request.getSession();
 		String uname = (String) session.getAttribute("uname");
 		String full_name = (String) session.getAttribute("StudentName");
-		String mobile = request.getParameter("mobile");
+		String mobile = (String) session.getAttribute("StudentNumber");
 		String feedback = request.getParameter("message");
+		Enumeration<String> attributes = request.getSession().getAttributeNames();
+		while (attributes.hasMoreElements()) {
+		    String attribute = (String) attributes.nextElement();
+		    System.out.println(attribute+" : "+request.getSession().getAttribute(attribute));
+		}
 		try {
 			Connection connection = DatabaseConnection.getConnection();
 			Statement statement = connection.createStatement();
-			int applyLeave = statement
+			int addfeedback = statement
 					.executeUpdate("insert into student_feedback(fid,full_name,mobile,feedback,uname) values('" + fid
 							+ "','" + full_name + "','" + mobile + "','" + feedback + "','" + uname + "')");
-			if (applyLeave > 0) {
+			if (addfeedback > 0) {
 				String message = "Feedback submitted successfully.";
 				session.setAttribute("student-feedback", message);
 				response.sendRedirect("student_feedback.jsp");

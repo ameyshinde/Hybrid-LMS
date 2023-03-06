@@ -69,7 +69,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Student Available Test
+					style="text-transform: uppercase">Student Course Details / Student Available Test
 					</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");

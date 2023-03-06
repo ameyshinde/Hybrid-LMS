@@ -15,8 +15,12 @@
 			href="#" id="navbardrop" data-toggle="dropdown"> Students
 				Actions </a>
 				<div class="dropdown-menu">
+				<a class="dropdown-item" href="add_notes.jsp">Add Study Material</a>
 				<a class="dropdown-item" href="add_announcements.jsp">Add Announcements</a>
+				<a class="dropdown-item" href="add_assignments.jsp">Add Assignments</a>
 				<a class="dropdown-item" href="quizmanagement.jsp">Quiz Management</a>
+				
+				
 				
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
@@ -36,6 +40,7 @@
 			    <a class="dropdown-item" href="monthly_attendance_report.jsp">Monthly Attendance Report</a>
 			</div>
 		</li>&emsp;
+		<li class="nav-item"><a class="nav-link" href="faculty_feedback.jsp">Feedback</a></li>&emsp;&nbsp;
 		<li class="nav-item"><a class="nav-link" href="faculty_reports.jsp">Reports</a></li>&emsp;&emsp;
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbardrop" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>&nbsp;<%=session.getAttribute("uname")%></a>

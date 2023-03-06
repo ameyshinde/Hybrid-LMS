@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -47,7 +47,7 @@
 				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">Student Course details / Announcements
 					</div>
 				<div class="panel panel-secondary shadow p-3 mb-5">
-					<div class="panel-heading">
+					<div class="panel-heading bg-info text-white">
 						<strong>Announcements</strong>&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;<a
 							class="btn btn-warning" href=""><span class="badge"><%=count%></span>
 							Notification</a>

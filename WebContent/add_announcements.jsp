@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -42,7 +42,7 @@
 					session.removeAttribute("notice-apply");
 				%>
 				<div class='alert alert-success' id='success'>Announcement
-					successfully sent.</div>
+					successfully sent. </div>
 				<%
 				}
 				%>

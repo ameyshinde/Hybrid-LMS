@@ -24,8 +24,8 @@ public class StudentQuery extends HttpServlet {
 			HttpSession session = request.getSession();
 			String uname = (String) session.getAttribute("uname");
 			String name = (String) session.getAttribute("StudentName");
-			String mobile = request.getParameter("mobile");
-			String email = request.getParameter("email");
+			String mobile = (String) session.getAttribute("StudentNumber");
+			String email = (String) session.getAttribute("StudentEmail");
 			String message = request.getParameter("message");
 			Connection con = DatabaseConnection.getConnection();
 			Statement st = con.createStatement();

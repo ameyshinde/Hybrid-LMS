@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -39,7 +39,15 @@
 	<%
 	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
-	<jsp:include page="admin_side_header.jsp"></jsp:include>
+	<c:choose>
+		<c:when test="${sessionScope.uname == 'admin'}">
+			<jsp:include page="admin_side_header.jsp" />
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="student_side_header.jsp" />
+		</c:otherwise>
+	</c:choose>
+	
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
@@ -49,13 +57,13 @@
 				<%
 				String getreport = (String) session.getAttribute("lmsg");
 				if (getreport != null) {
-					
+
 					session.removeAttribute("lmsg");
 				%>
-				<div class='alert alert-danger' id='danger'> No Project Report
+				<div class='alert alert-danger' id='danger'>No Project Report
 					Details Found.</div>
 				<%
-				} 
+				}
 				%>
 				<div class="panel-body">
 					<div class="row">
@@ -67,7 +75,7 @@
 											<div class="row">
 												<div class="col-md-4"></div>
 												<div class="col-md-4">
-													<form class="form-inline" action="viewreport">
+													<form class="form-inline" action="visualreport">
 														<div class="form-group mx-sm-3 mb-2 mr-2">
 															<select class="form-select form-select-sm" name="phase">
 																<option selected value="1">Phase One</option>

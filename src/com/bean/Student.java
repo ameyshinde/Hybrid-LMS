@@ -1,6 +1,5 @@
 package com.bean;
 
-
 public class Student {
 
 	private String usn, name, dept, email, mob, pwd;

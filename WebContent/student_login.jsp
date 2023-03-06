@@ -31,7 +31,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body style="background-image:url(images/studentbg_cleanup.jpg);  background-repeat: no-repeat;  
+<body style="background-image:url(images/studenthomelogo.png); background-position: bottom left; background-repeat: no-repeat;  
   background-position: 0% 0%; height: 100vh;
   background-size: 100% 100%">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">

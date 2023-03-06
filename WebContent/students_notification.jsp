@@ -55,7 +55,7 @@
 								class="table table-striped table-hover table-bordered">
 								<thead>
 									<tr>
-										<th>Student Id</th>
+										<th>Inquiry Id</th>
 										<th>Student Name</th>
 										<th>Mobile No</th>
 										<th>Email Id</th>

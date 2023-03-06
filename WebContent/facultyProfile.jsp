@@ -118,6 +118,22 @@
 																value="<%=rs.getString(7)%>" disabled>
 														</div>
 													</div>
+													<div class="form-group row">
+														<label for="subject" class="col-4 col-form-label">Subject Allocated</label>
+														<div class="col-8">
+															<input id="subject" name="" placeholder=""
+																class="form-control here" type="text"
+																value="<%=rs.getString(9)%>" disabled>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="subjectcode" class="col-4 col-form-label">Subject Code</label>
+														<div class="col-8">
+															<input id="subjectcode" name="" placeholder=""
+																class="form-control here" type="text"
+																value="<%=rs.getString(10)%>" disabled>
+														</div>
+													</div>
 												</form>
 											</div>
 											<%

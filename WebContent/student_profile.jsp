@@ -107,7 +107,7 @@
 														<div class="col-8">
 															<input id="email" name="" placeholder=""
 																class="form-control here" type="text"
-																value="<%=rs.getString(6)%>" disabled>
+																value="<%=rs.getString(7)%>" disabled>
 														</div>
 													</div>
 													<div class="form-group row">

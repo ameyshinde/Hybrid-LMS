@@ -5,7 +5,7 @@ import java.util.List;
 import com.bean.MyProject;
 import com.bean.Student;
 import com.bean.ProjectReport;
-
+import com.bean.Notes;
 
 
 public interface Dao {
@@ -30,8 +30,12 @@ public interface Dao {
 	List<MyProject> searchProject(String str);
 
 	boolean addReport(ProjectReport report);
+	
+	boolean addNotes(Notes notes);
 
 	ResultSet getReport(int phase, String title); 
+	
+	ResultSet getNotes(String fileName);
 
 }
 

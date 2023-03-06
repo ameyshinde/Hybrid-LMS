@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -72,7 +72,7 @@
 															<input id="full_name" name="full_name" placeholder=""
 																class="form-control here" type="text" value="">
 														</div>
-													</div>  -->
+													</div>  
 													<div class="form-group row">
 														<label for="mobile" class="col-4 col-form-label">Mobile
 															No </label>
@@ -80,7 +80,7 @@
 															<input id="mobile" name="mobile" placeholder=""
 																class="form-control here" type="text" value="">
 														</div>
-													</div>
+													</div> -->
 													<div class="form-group row">
 														<label for="message" class="col-4 col-form-label">Feedback</label>
 														<div class="col-8">

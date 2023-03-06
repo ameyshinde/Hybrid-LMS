@@ -27,7 +27,7 @@
 <style type="text/css">
 .container {
 	width: 900px;
-	height: 800px;
+	height: auto;
 	padding-left: 20px;
 	background-color: rgba(52, 73, 94, 0.7);
 	border-radius: 4px;

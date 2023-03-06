@@ -28,13 +28,17 @@ public class TeacherLogin extends HttpServlet {
 			Connection con = DatabaseConnection.getConnection();
 			Statement st = con.createStatement();
 			ResultSet resultset = st
-					.executeQuery("select teacher_id,uname,password,status,teacher_name from faculty where uname='"
+					.executeQuery("select teacher_id,uname,password,status,teacher_name,mobile,department,Subject,Subject_code from faculty where uname='"
 							+ uname + "' and password='" + pass + "'");
 			if (resultset.next()) {
 				if (resultset.getInt(4) == 1) {
 					hs.setAttribute("uname", uname);
-					hs.setAttribute("TeacherName", resultset.getString(2));
-					hs.setAttribute("student_id", resultset.getInt(1));
+					hs.setAttribute("teacher_id", resultset.getInt(1));
+					hs.setAttribute("TeacherName", resultset.getString(5));
+					hs.setAttribute("TeacherNumber", resultset.getString(6));
+					hs.setAttribute("Department", resultset.getString(7));
+					hs.setAttribute("Subject", resultset.getString(8));
+					hs.setAttribute("Subject_code", resultset.getString(9));
 					response.sendRedirect("after_facultyLogin.jsp");
 				} else {
 					String message = "Account not activated please inform admin to activate account.";
