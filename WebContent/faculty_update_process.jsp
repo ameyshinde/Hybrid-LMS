@@ -9,11 +9,13 @@
 	String branch = request.getParameter("branchname");
 	String mobile = request.getParameter("mobile");
 	String email = request.getParameter("email");
+	String subject = request.getParameter("subject");
+	String subject_code = request.getParameter("subjectcode");
 	if (teacher_id != null) {
 		try {
 			Connection con = DatabaseConnection.getConnection();
 			Statement statement = con.createStatement();
-			int updateFaculty = statement.executeUpdate("Update faculty set teacher_name='" + tname+ "',department='" + branch + "',mobile='" + mobile + "',email='"+ email + "' where teacher_id=" + teacher_id);
+			int updateFaculty = statement.executeUpdate("Update faculty set teacher_name='" + tname+ "',department='" + branch + "',mobile='" + mobile + "',email='"+ email + "',Subject='"+ subject +"',Subject_code='" + subject_code + "' where teacher_id=" + teacher_id);
 			if (updateFaculty > 0) {
 				String message="Record updated successfully";
 				session.setAttribute("update-success-message", message);

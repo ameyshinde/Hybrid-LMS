@@ -26,20 +26,43 @@ public class Quiz extends HttpServlet {
 		String option3 = request.getParameter("option3");
 		String option4 = request.getParameter("option4");
 		String correctAnswer = request.getParameter("correctAnswer");
+		String subject = (String) session.getAttribute("Subject");
+		
+		
+		if(subject.equalsIgnoreCase("Aptitude")) {
 		try {
 			Connection connection = DatabaseConnection.getConnection();
 			Statement statement = connection.createStatement();
-			int addquiz = statement.executeUpdate(
-					"insert into quiz(quiz_no,question,option1,option2,option3,option4,correct_option) values('" + quiz_no
+			int addaptitude = statement.executeUpdate(
+					"insert into aptitude(quiz_no,question,option1,option2,option3,option4,correct_option,subject) values('" + quiz_no
 							+ "','" + question + "','" + option1 + "','" + option2 + "','" + option3 + "','" + option4
-							+ "','" + correctAnswer + "')");
-			if (addquiz > 0) {
+							+ "','" + correctAnswer + "','" + subject + "')");
+			if (addaptitude > 0) {
 				String sentquiz = "Question sent sucess.";
 				session.setAttribute("quiz-apply", sentquiz);
 				response.sendRedirect("add_Quiz.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+		else
+		{
+			try {
+				Connection connection = DatabaseConnection.getConnection();
+				Statement statement = connection.createStatement();
+				int addquiz = statement.executeUpdate(
+						"insert into quiz(quiz_no,question,option1,option2,option3,option4,correct_option,subject) values('" + quiz_no
+								+ "','" + question + "','" + option1 + "','" + option2 + "','" + option3 + "','" + option4
+								+ "','" + correctAnswer + "','" + subject + "')");
+				if (addquiz > 0) {
+					String sentquiz = "Question sent sucess.";
+					session.setAttribute("quiz-apply", sentquiz);
+					response.sendRedirect("add_Quiz.jsp");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

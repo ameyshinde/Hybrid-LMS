@@ -16,7 +16,7 @@
 				Details </a>
 			<div class="dropdown-menu">
 				<a class="dropdown-item" href="students_announcement.jsp">Student Announcement/Notification</a> 
-				<a class="dropdown-item" href="checkoutquiz.jsp">Student Available Test</a>
+				<a class="dropdown-item" href="selectexam.jsp">Student Available Test</a>
 				<a class="dropdown-item" href="noteslist.jsp">Access Study Material</a>
 				<a class="dropdown-item" href="students_assignments.jsp">Access Assignments</a>
 			</div>

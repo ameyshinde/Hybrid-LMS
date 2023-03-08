@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -65,7 +65,7 @@
 }
 
 .userchoice {
-	color: #064789;
+	color: red;
 	font-style: oblique;
 	
 }
@@ -75,13 +75,13 @@
 	<%
 	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
-	<jsp:include page="admin_side_header.jsp"></jsp:include>
+	<jsp:include page="faculty_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Add Quiz
-					for students</div>
+					style="text-transform: uppercase">Student action / Quiz
+					Results </div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {
@@ -94,7 +94,7 @@
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Send Quiz&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						View Quiz Results&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -103,7 +103,7 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>QUIZ TEST</h4>
+												<h4>QUIZ RESULTS</h4>
 												<hr>
 											</div>
 										</div>

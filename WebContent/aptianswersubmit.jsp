@@ -57,8 +57,8 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Subject
-					Quiz for students</div>
+					style="text-transform: uppercase">Student action / Attempt
+					Aptitude Test for students</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {
@@ -71,7 +71,7 @@
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Subject Quiz&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						Aptitude Test&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -80,7 +80,7 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>QUIZ TEST</h4>
+												<h4>APTITUDE TEST</h4>
 												<div id="timer"></div>
 												<hr>
 											</div>
@@ -90,7 +90,7 @@
 
 											<%
 											Connection conn = DatabaseConnection.getConnection();
-											String query = "select count(quiz_no) as totalQuestions from quiz";
+											String query = "select count(quiz_no) as totalQuestions from aptitude";
 											PreparedStatement ps = conn.prepareStatement(query);
 											ResultSet rs = ps.executeQuery();
 											rs.next();
@@ -107,7 +107,7 @@
 											Question q = (Question) list.get(qn++);
 											%>
 											<div class="container">
-												<form method="post" action="saveQuiz">
+												<form method="post" action="saveAptitude">
 													<b style="font-size: 1.2em; color: #26408B;"><i> <%
  out.println("Question" + q.getSno() + ". " + q.getQuestion());
  session.setAttribute("sno", q.getSno());

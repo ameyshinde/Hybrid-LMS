@@ -27,9 +27,9 @@
 <style type="text/css">
 .container {
 	width: 950px;
-	height: 1200px;
-	padding-left:80px;
-	padding-top:40px;
+	height: auto;
+	padding-left: 80px;
+	padding-top: 40px;
 	background-color: rgba(52, 73, 94, 0.7);
 	border-radius: 4px;
 	margin: 0 auto;
@@ -50,13 +50,12 @@
 	height: 40px;
 	width: 150px;
 	margin-left: 210px;
-	
 }
-.text{
-	color:#ffff80;
-	font-style:oblique;
-	font-size:1.2em;
-	
+
+.text {
+	color: #ffff80;
+	font-style: oblique;
+	font-size: 1.2em;
 }
 </style>
 </head>
@@ -83,7 +82,7 @@
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Send Quiz&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						View Quiz&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -98,6 +97,44 @@
 										</div>
 										<div class="row">
 											<div class="col-md-12">
+												<%String subject = (String) session.getAttribute("Subject");
+											if(subject.equalsIgnoreCase("Aptitude")){%>
+												<%
+												Connection connection = DatabaseConnection.getConnection();
+												String query = "select * from aptitude";
+												PreparedStatement ps = connection.prepareStatement(query);
+												ResultSet rs = ps.executeQuery();
+												%>
+												<div class="container">
+													<h2 style="color: #ffff80; text-align: center;">Aptitude
+														questions database:</h2>
+													<%
+													while (rs.next()) {
+														String sno = rs.getString("quiz_no");
+														String ques = rs.getString("question");
+														String a = rs.getString("option1");
+														String b = rs.getString("option2");
+														String c = rs.getString("option3");
+														String d = rs.getString("option4");
+														String correct = rs.getString("correct_option");
+													%>
+
+													<b class="text">Question <%=sno%>: <%=ques%></b><br> <b
+														class="text">a) <%=a%></b><br> <b class="text">b)
+														<%=b%></b><br> <b class="text">c) <%=c%></b><br> <b
+														class="text">d) <%=d%></b><br> <b class="text">Correct
+														Choice: <%=correct%></b><br> <br>
+
+													<%
+													}
+													connection.close();
+													%>
+													<a href="add_Quiz.jsp"><input type="button"
+														value="Add Question" class="signout"></a><a
+														href="delete_Quiz.jsp"><input type="button"
+														value="Delete Question" class="signout"></a>
+												</div>
+												<%}else{ %>
 												<%
 												Connection connection = DatabaseConnection.getConnection();
 												String query = "select * from quiz";
@@ -122,8 +159,7 @@
 														class="text">a) <%=a%></b><br> <b class="text">b)
 														<%=b%></b><br> <b class="text">c) <%=c%></b><br> <b
 														class="text">d) <%=d%></b><br> <b class="text">Correct
-														Choice: <%=correct%></b><br>
-													<br>
+														Choice: <%=correct%></b><br> <br>
 
 													<%
 													}
@@ -134,6 +170,7 @@
 														href="delete_Quiz.jsp"><input type="button"
 														value="Delete Question" class="signout"></a>
 												</div>
+												<%} %>
 											</div>
 										</div>
 									</div>

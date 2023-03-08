@@ -71,6 +71,16 @@
 									class="form-control" id="email" name="email"
 									value="<%=resultSet.getString(5)%>">
 							</div>
+							<div class="form-group">
+								<label for="subject">Subject:</label> <input type="text"
+									class="form-control" id="subject" name="subject"
+									value="<%=resultSet.getString(9)%>">
+							</div>
+							<div class="form-group">
+								<label for="subjectcode">Subject Code:</label> <input type="text"
+									class="form-control" id="subjectcode" name="subjectcode"
+									value="<%=resultSet.getString(10)%>">
+							</div>
 							<input type="submit" class="btn btn-primary"
 								value="Update Information">
 						</form>

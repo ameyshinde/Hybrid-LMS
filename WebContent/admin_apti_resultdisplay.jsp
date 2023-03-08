@@ -27,9 +27,8 @@
 <style type="text/css">
 .container {
 	width: 900px;
-	height: 300px;
-	padding-top: 50px;
-	padding-left: 40%;
+	height: auto;
+	padding-left: 20px;
 	background-color: rgba(52, 73, 94, 0.7);
 	border-radius: 4px;
 	margin: 0 auto;
@@ -48,7 +47,26 @@
 	border-bottom: 4px solid #27aE60;
 	cursor: pointer;
 	height: 40px;
-	width: 150px;
+	width: 100px;
+	margin-left: 30px;
+	margin-top: -30px;
+}
+
+.text {
+	color: #ffff80;
+	font-style: oblique;
+	font-size: 1.2em;
+}
+
+.correct {
+	color: green;
+	font-style: oblique;
+	font-size: 1.2em;
+}
+
+.userchoice {
+	color: red;
+	font-style: oblique;
 }
 </style>
 </head>
@@ -62,20 +80,20 @@
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
 					style="text-transform: uppercase">Student action / Quiz
-					Management</div>
+					Results</div>
 				<%
-				String sentquiz = (String) session.getAttribute("quiz-updates");
+				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {
-					session.removeAttribute("quiz-updates");
+					session.removeAttribute("quiz-apply");
 				%>
-				<div class='alert alert-success' id='success'>Quiz Database
-					Updated Succesfully.</div>
+				<div class='alert alert-success' id='success'>Quiz
+					successfully sent.</div>
 				<%
 				}
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Quiz Management&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						View Quiz Results&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -84,21 +102,52 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>QUIZ MANAGEMENT</h4>
+												<h4>QUIZ RESULTS</h4>
 												<hr>
 											</div>
 										</div>
-										<div class="container">
-											<div class="row">
-												<div class="col-md-12">
+										<div class="row">
+											<div class="col-md-12">
+												<%
+												String uname = request.getParameter("uname");
+												Connection conn = DatabaseConnection.getConnection();
+												String query1 = "select * from aptitude order by quiz_no";
+												String query2 = "select * from apti_answers where username=? order by quiz_no";
+												PreparedStatement ps1 = conn.prepareStatement(query1);
+												PreparedStatement ps2 = conn.prepareStatement(query2);
+												ps2.setString(1, uname);
+												ResultSet rs1 = ps1.executeQuery();
+												ResultSet rs2 = ps2.executeQuery();
+												int cnum = 0;
+												%>
+												<div class="container">
 
-													<a href="add_Quiz.jsp"><input type="button"
-														value="Add  Question" class="signout"></a><br> <br>
-													<a href="delete_Quiz.jsp"><input type="button"
-														value="Delete  Question" class="signout"></a><br>
-													<br> <a href="view_quiz_questions.jsp"><input
-														type="button" value="View User Details" class="signout"></a>
+													<b class="text">
+														<h2 style="text-align: center;">Detailed result:</h2> <%
+ while (rs1.next() && rs2.next()) {
+ 	String sno = rs1.getString("quiz_no");
+ 	String ques = rs1.getString("question");
+ 	String a = rs1.getString("option1");
+ 	String b = rs1.getString("option2");
+ 	String c = rs1.getString("option3");
+ 	String d = rs1.getString("option4");
+ 	String correct = rs1.getString("correct_option");
+ 	String userans = rs2.getString("userans");
+ 	if (correct.equals(userans)) {
+ 		cnum++;
+ 	}
+ %> Question <%=sno%>: <%=ques%><br> a) <%=a%><br> b) <%=b%><br>
+														c) <%=c%><br> d) <%=d%><br> <b class="result">
+															Correct Choice: <%=correct%><br>
+													</b> User's Choice: <b class="userchoice"> <%=userans%></b><br>
+														<br> <%
+ }
+ out.println("Number of correct answers: " + cnum);
+ conn.close();
+ %>
+													</b>
 												</div>
+
 											</div>
 										</div>
 									</div>
@@ -115,6 +164,7 @@
 	response.sendRedirect("index.jsp");
 	}
 	%>
+
 </body>
 <script type="text/javascript">
 	$(function() {

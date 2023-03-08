@@ -27,7 +27,7 @@
 <style type="text/css">
 .container {
 	width: 950px;
-	height: 800px;
+	height: 300px;
 	padding-left: 80px;
 	padding-top: 40px;
 	background-color: rgba(52, 73, 94, 0.7);
@@ -68,8 +68,8 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Add Quiz
-					for students</div>
+					style="text-transform: uppercase">Student action / View Quiz
+					Results </div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {
@@ -82,7 +82,7 @@
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Send Quiz&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						View Quiz Results&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -91,13 +91,30 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>QUIZ TEST</h4>
+												<h4>QUIZ RESULTS</h4>
 												<hr>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-12">
-												
+												<%String subject = (String) session.getAttribute("Subject");
+												if(subject.equalsIgnoreCase("Aptitude")) {%>
+												<div class="container">
+													<b class="text"> 
+														<fieldset style="text-align: center; width: 500px;">
+															<legend> Enter username of user you whose
+																details you wish to view:</legend>
+															<br>
+															<form action="admin_apti_resultdisplay.jsp" method="post">
+																<br> Username : <input type="text" name="uname"><br>
+																<br> <input type="submit" value="View">
+
+															</form>
+
+														</fieldset>
+													</b>
+												</div>
+												<%} else{ %>
 												<div class="container">
 													<b class="text"> 
 														<fieldset style="text-align: center; width: 500px;">
@@ -113,6 +130,7 @@
 														</fieldset>
 													</b>
 												</div>
+												<%} %>
 											</div>
 										</div>
 									</div>

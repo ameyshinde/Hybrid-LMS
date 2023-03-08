@@ -59,8 +59,8 @@ font-size: 1.2em;}
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Quiz
-					Results</div>
+					style="text-transform: uppercase">Student action / Aptitude
+					Test Results</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {
@@ -73,7 +73,7 @@ font-size: 1.2em;}
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Quiz Results&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						Aptitude Results&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -82,22 +82,22 @@ font-size: 1.2em;}
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>QUIZ COMPLETED</h4>
+												<h4>Aptitude TEST</h4>
 												<hr>
 											</div>
 										</div>
-										<a href="checkoutquiz.jsp"><input type="button"
+										<a href="selectexam.jsp"><input type="button"
 											value="Home"
 											style="color: green; background: #F1F0D1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; border-radius: 4px; border: none; border-bottom: 4px solid #27aE60; cursor: pointer; height: 40px; width: 100px; margin-right: 30px;"></a>
-										<a href="viewquizresult.jsp"><input type="button"
+										<a href="viewaptiresult.jsp"><input type="button"
 											value="View Detailed Result"
 											style="color: green; background: #F1F0D1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; border-radius: 4px; border: none; border-bottom: 4px solid #27aE60; cursor: pointer; height: 40px; width: 200px;">
 										</a>
 
 										<%
 										Connection conn = DatabaseConnection.getConnection();
-										String query1 = "select * from quiz_answers  where username=? order by quiz_no";
-										String query2 = "select correct_option from quiz order by quiz_no";
+										String query1 = "select * from apti_answers  where username=? order by quiz_no";
+										String query2 = "select correct_option from aptitude order by quiz_no";
 
 										PreparedStatement st = conn.prepareStatement(query1);
 										PreparedStatement st2 = conn.prepareStatement(query2);

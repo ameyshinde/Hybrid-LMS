@@ -69,6 +69,7 @@
 										<th>Branch Name</th>
 										<th>Mobile</th>
 										<th>Email</th>
+										<th>Allocated Subject</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -84,6 +85,7 @@
 										<td><%=rs.getString(4)%></td>
 										<td><%=rs.getString(3)%></td>
 										<td><%=rs.getString(5)%></td>
+										<td><%=rs.getString(9)%></td>
 										<td><a class="btn btn-warning"
 											href="faculty_update_data.jsp?_tokens=<%=tokens%>&teacher_id=<%=rs.getInt("teacher_id")%>"><i
 												class="glyphicon glyphicon-edit"></i> Edit</a></td>

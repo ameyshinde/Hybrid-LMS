@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -132,7 +132,7 @@
 													<div class="form-group row">
 														<label for="option1" class="col-4 col-form-label"><b class="text">Option
 															A </b></label>
-														<div class="col-4">
+														<div class="col-6">
 															<input type="text" id="option1" name="option1"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
@@ -140,7 +140,7 @@
 													<div class="form-group row">
 														<label for="option2" class="col-4 col-form-label"><b class="text">Option
 															B </b></label>
-														<div class="col-4">
+														<div class="col-6">
 															<input type="text" id="option2" name="option2"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
@@ -148,7 +148,7 @@
 													<div class="form-group row">
 														<label for="option3" class="col-4 col-form-label"><b class="text">Option
 															C </b></label>
-														<div class="col-4">
+														<div class="col-6">
 															<input type="text" id="option3" name="option3"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
@@ -156,7 +156,7 @@
 													<div class="form-group row">
 														<label for="option4" class="col-4 col-form-label"><b class="text">Option
 															D </b></label>
-														<div class="col-4">
+														<div class="col-6">
 															<input type="text" id="option4" name="option4"
 																placeholder="" class="form-control here" value=""></input>
 														</div>
@@ -167,7 +167,7 @@
 														<div class="col-8">
 															<div class="form-group row">
 
-																<div class="col-4">
+																<div class="col-9">
 																	<input type="text" id="correctAnswer"
 																		name="correctAnswer" placeholder=""
 																		class="form-control here" value=""></input>
@@ -183,7 +183,6 @@
 																value="Reset" class="btn btn-danger">
 														</div>
 													</div>
-
 												</form>
 											</div>
 										</div>

@@ -36,7 +36,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Subject
+					style="text-transform: uppercase">Student action / Aptitude
 					Test for students</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
@@ -50,7 +50,7 @@
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Subject Test&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						Aptitude Test&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -59,12 +59,12 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h4>QUIZ TEST</h4>
+												<h4>Aptitude TEST</h4>
 												<hr>
 												<a href="selectexam.jsp"><input type="button"
 													value="Home"
 													style="color: green; background: #F1F0D1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; border-radius: 4px; border: none; border-bottom: 4px solid #27aE60; cursor: pointer; height: 40px; width: 100px; margin-right: 30px;"></a>
-												<a href="viewquizresult.jsp"><input type="button"
+												<a href="viewaptiresult.jsp"><input type="button"
 													value="View Result"
 													style="color: green; background: #F1F0D1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; border-radius: 4px; border: none; border-bottom: 4px solid #27aE60; cursor: pointer; height: 40px; width: 100px;">
 												</a><br> <br> <br>
@@ -73,9 +73,9 @@
 										<%
 										String s = (String) session.getAttribute("uname");
 										Connection conn = DatabaseConnection.getConnection();
-										String query2 = "select * from quiz_answers where username=?";
+										String query2 = "select * from apti_answers where username=?";
 										PreparedStatement ps = conn.prepareStatement(query2);
-										PreparedStatement ps2 = conn.prepareStatement("select * from quiz order by quiz_no");
+										PreparedStatement ps2 = conn.prepareStatement("select * from aptitude order by quiz_no");
 										ps.setString(1, s);
 										ResultSet rs = ps.executeQuery();
 
@@ -100,7 +100,7 @@
 											session.setAttribute("dbdata", list);
 											conn.close();
 										%>
-										<jsp:forward page="answersubmit.jsp"></jsp:forward>
+										<jsp:forward page="aptianswersubmit.jsp"></jsp:forward>
 										<%
 										}
 										%>

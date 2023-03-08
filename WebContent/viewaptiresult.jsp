@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Hybrid LMS</title>
+<title>Student Attendance System</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -36,7 +36,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Quiz Result
+					style="text-transform: uppercase">Student action / Aptitude Result
 					</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
@@ -50,7 +50,7 @@
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Quiz Results&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						Aptitude Results&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -59,13 +59,13 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-12">
-												<h2>Detailed QUIZ RESULT:</h2>
+												<h3>Detailed Aptitude Results:</h3>
 												<hr>
 												<%
 												String uname = (String) session.getAttribute("uname");
 												Connection connection = DatabaseConnection.getConnection();
-												String query1 = "select * from quiz order by quiz_no";
-												String query2 = "select * from quiz_answers where username=? order by quiz_no";
+												String query1 = "select * from aptitude order by quiz_no";
+												String query2 = "select * from apti_answers where username=? order by quiz_no";
 												PreparedStatement ps1 = connection.prepareStatement(query1);
 												PreparedStatement ps2 = connection.prepareStatement(query2);
 												ps2.setString(1, uname);

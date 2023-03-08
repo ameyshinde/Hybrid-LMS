@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -57,7 +57,6 @@
 	font-size: 1.2em;
 	padding-left: -50px;
 }
-
 </style>
 </head>
 <body style="background-color: #F0F0F0";>
@@ -69,8 +68,8 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student Course Details / Student Available Test
-					</div>
+					style="text-transform: uppercase">Student Course Details /
+					Student Available Test</div>
 				<%
 				String sentquiz = (String) session.getAttribute("quiz-apply");
 				if (sentquiz != null) {
@@ -98,8 +97,10 @@
 										</div>
 										<%
 										ResultSet rs = DatabaseConnection.getResultFromSqlQuery("select * from quiz");
-										rs.next();
-										int count = rs.getInt(1);
+										System.out.println(rs);
+										if (rs.next()) {
+											int count = rs.getInt(1);
+											System.out.println(count);
 										%>
 										<div class="row">
 											<div class="col-md-12">
@@ -110,19 +111,24 @@
 														<div class="container">
 															<h1 class="card-title">MCQ TEST</h1>
 															<h2 class="card-title">INSTRUCTIONS:</h2>
-															<b class="text">1. Complete the Test in 1 Minute </b><br>
+															<b class="text">1. Each Question has 1 Minute. </b><br>
 															<b class="text">2. Each question is of 1 mark.</b><br>
 															<b class="text">3. Only one answer is correct for
 																each question.</b><br> <b class="text">4. The test
-																is allowed only once.</b>
-																<br>
-																<br> <a href="takequiz.jsp"
-																class="btn btn-danger">START</a>
+																is allowed only once.</b> <br> <br> <a
+																href="takequiz.jsp" class="btn btn-danger">START</a>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
+										<%
+										} else {
+										%>
+										<h1 class="card-title">No MCQ Test Available</h1>
+										<%
+										}
+										%>
 									</div>
 								</div>
 							</div>
