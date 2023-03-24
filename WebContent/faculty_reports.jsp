@@ -58,7 +58,6 @@
 											class="btn btn-info"></td>
 									</tr>
 								</form>
-								
 							</tbody>
 						</table>
 					</div>

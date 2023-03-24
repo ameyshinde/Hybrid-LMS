@@ -217,6 +217,13 @@
 											class="btn btn-info"></td>
 									</tr>
 								</form>
+								<form action="AllFacultyRegisterReport">
+									<tr>
+										<th>All Faculty Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-info"></td>
+									</tr>
+								</form>
 								<form action="StudentsActiveOrInactive">
 									<tr>
 										<th>Student Active & Deactive Report</th>
@@ -237,6 +244,13 @@
 											class="btn btn-warning"></td>
 									</tr>
 								</form>
+								<form action="FacultyFeedbackReport">
+									<tr>
+										<th>Faculty Feedback Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-secondary"></td>
+									</tr>
+								</form>
 								<form action="StudentsLeavePending">
 									<tr>
 										<th>Pending Leave Report</th>
@@ -249,6 +263,19 @@
 										<th>Approved Leave Report</th>
 										<td><input type="submit" value="Generate Reports"
 											class="btn btn-success"></td>
+									</tr>
+								</form>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<table id="table" class="table table-bordered shadow p-3 mb-5">
+							<tbody>
+								<form action="ProjectGuideReport">
+									<tr>
+										<th>Allocated Project Guide Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-warning"></td>
 									</tr>
 								</form>
 							</tbody>

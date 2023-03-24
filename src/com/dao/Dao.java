@@ -24,6 +24,12 @@ public interface Dao {
 	Student loginStudent(String email, String password);
 
 	List<MyProject> getProjectsByStatus(String status) ;
+	
+	List<MyProject> getSpecificeGuideProject(String status) ;
+	
+	List<MyProject> getProjectsByAllocatedFaculty() ;
+	
+	List<MyProject> getProjectsByUnAllocatedFaculty() ;
 
 	List<MyProject> getAllProjects();
 

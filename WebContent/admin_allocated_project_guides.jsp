@@ -1,3 +1,8 @@
+<%@page import="com.bean.MyProject"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dao.Dao"%>
+<%@page import="com.dao.DaoImpl"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.attendance.DatabaseConnection"%>
@@ -44,7 +49,7 @@
 			<div class="panel-body">
 				<%
 				ResultSet resultset = DatabaseConnection
-						.getResultFromSqlQuery("select COUNT(status) from projectinfo where status='APPROVED'");
+						.getResultFromSqlQuery("select * from projectinfo where Allocated_guide IS NOT NULL");
 				resultset.next();
 				int count = resultset.getInt(1);
 				%>
@@ -52,22 +57,22 @@
 
 				<div class="alert alert-info shadow p-3 mb-5"
 					style="text-transform: uppercase">Project Management /
-					Approved Projects</div>
+					Allocated Projects</div>
 				<%
 				String sentupdates = (String) session.getAttribute("msg");
 				if (sentupdates != null) {
 					session.removeAttribute("msg");
 				%>
-				<div class='alert alert-success' id='success'>Project Reviewed
-					and Updates if any successfully sent.</div>
+				<div class='alert alert-success' id='success'>Project Guide
+					Allocated successfully</div>
 				<%
 				}
 				%>
 				<div class="panel panel-secondary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						<strong>Approved</strong>&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;<a
+						<strong>Allocated</strong>&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;<a
 							class="btn btn-warning" href=""><span class="badge"><%=count%></span>
-							Approved</a>
+							Allocated</a>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -80,29 +85,37 @@
 
 												<h2 align="center">
 													Showing <b> <%
- out.println(session.getAttribute("status").toString().toUpperCase());
+ out.println("Allocated Projects List".toUpperCase());
  %>
-													</b> Projects List
+													</b> 
 												</h2>
+												<%
+												String sql = "select * from projectinfo where Allocated_guide IS NOT NULL";
+
+												//ResultSet rs = DatabaseConnection.getResultFromSqlQuery("select * from projectinfo where Allocated_guide IS NOT NULL");
 												
+												List<MyProject> list = null;
+												Dao dao = new DaoImpl();
+												list = dao.getProjectsByAllocatedFaculty();
+												request.setAttribute("projects", list);
+												%>
 												<table id="sports" align="center">
 													<tr>
 													<tr>
 														<th>Project ID</th>
 														<th>Project Title</th>
-														<th>Type</th>
 														<th>Team Members</th>
 														<th>Project Abstract</th>
 														<th>Status</th>
 														<th>Feedback From Admin</th>
 														<th>Update</th>
 														<th>View Report</th>
+														<th>Allocate Project Guide</th>
 													</tr>
 													<c:forEach items="${projects}" var="p">
 														<tr>
 															<td>${p.id}</td>
 															<td>${p.ptitle}</td>
-															<td>${p.type}</td>
 															<td>${p.team}</td>
 															<td>${p.pabstract}</td>
 															<td class="status">${p.status}</td>
@@ -111,9 +124,10 @@
 															</td>
 															<td><a href="getreport?title=${p.ptitle}"><button>View
 																		Report</button></a></td>
+															<td>${p.projectguide}</td>
 														</tr>
 													</c:forEach>
-												</table>
+												</table>		
 											</div>
 										</div>
 									</div>

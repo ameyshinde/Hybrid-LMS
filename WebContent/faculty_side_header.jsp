@@ -40,6 +40,13 @@
 			    <a class="dropdown-item" href="monthly_attendance_report.jsp">Monthly Attendance Report</a>
 			</div>
 		</li>&emsp;
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbardrop" data-toggle="dropdown">Project
+				Guide Section</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="showspecificguidesprojects">Show All Projects</a> 
+			</div>
+		</li>&emsp;
 		<li class="nav-item"><a class="nav-link" href="faculty_feedback.jsp">Feedback</a></li>&emsp;&nbsp;
 		<li class="nav-item"><a class="nav-link" href="faculty_reports.jsp">Reports</a></li>&emsp;&emsp;
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"

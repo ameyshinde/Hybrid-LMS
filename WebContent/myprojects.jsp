@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -77,7 +77,7 @@
 														<th>Team Members</th>
 														<th>Project Abstract</th>
 														<th>Status</th>
-														<th>Feedback From Admin</th>
+														<th>Feedback From Admin/Guide</th>
 														<th>Report</th>
 														<th>View Report</th>
 													</tr>

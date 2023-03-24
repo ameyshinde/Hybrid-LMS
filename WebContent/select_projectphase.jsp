@@ -43,16 +43,19 @@
 		<c:when test="${sessionScope.uname == 'admin'}">
 			<jsp:include page="admin_side_header.jsp" />
 		</c:when>
+		<c:when test="${sessionScope.TeacherName != null}">
+			<jsp:include page="faculty_side_header.jsp" />
+		</c:when>
 		<c:otherwise>
 			<jsp:include page="student_side_header.jsp" />
 		</c:otherwise>
 	</c:choose>
-	
+
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student Course details /
+					style="text-transform: uppercase">Project Management /
 					Projects</div>
 				<%
 				String getreport = (String) session.getAttribute("lmsg");

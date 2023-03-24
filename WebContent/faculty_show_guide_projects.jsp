@@ -5,6 +5,8 @@
 <%@ page import="java.security.SecureRandom"%>
 <%@ page import="java.util.Random"%>
 <%@page import="java.util.UUID"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,21 +40,26 @@
 	<%
 	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
-	<jsp:include page="admin_side_header.jsp"></jsp:include>
+	<jsp:include page="faculty_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
 				<%
-				ResultSet resultset = DatabaseConnection
-						.getResultFromSqlQuery("select COUNT(status) from projectinfo where status='APPROVED'");
-				resultset.next();
-				int count = resultset.getInt(1);
+				String tname = (String) session.getAttribute("TeacherName");
+
+				String query = "select COUNT(pid) from projectinfo where Allocated_guide=?";
+				ResultSet rs = null;
+				Connection connection = DatabaseConnection.getConnection();
+				PreparedStatement st = connection.prepareStatement(query);
+				st.setString(1, tname);
+				rs = st.executeQuery();
+				rs.next();
+				int count = rs.getInt(1);
 				%>
 
-
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Project Management /
-					Approved Projects</div>
+					style="text-transform: uppercase">Project Management / Show
+					All Projects Under my guidance</div>
 				<%
 				String sentupdates = (String) session.getAttribute("msg");
 				if (sentupdates != null) {
@@ -65,9 +72,9 @@
 				%>
 				<div class="panel panel-secondary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						<strong>Approved</strong>&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;<a
+						All Projects&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;<a
 							class="btn btn-warning" href=""><span class="badge"><%=count%></span>
-							Approved</a>
+							Total Projects</a>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -84,7 +91,6 @@
  %>
 													</b> Projects List
 												</h2>
-												
 												<table id="sports" align="center">
 													<tr>
 													<tr>
@@ -94,7 +100,7 @@
 														<th>Team Members</th>
 														<th>Project Abstract</th>
 														<th>Status</th>
-														<th>Feedback From Admin</th>
+														<th>Feedback From Guide</th>
 														<th>Update</th>
 														<th>View Report</th>
 													</tr>
@@ -150,6 +156,9 @@
 				$(x[i]).html('<h5 class="text-success">APPROVED</h5>')
 			}
 		}
+	});
+	$(function() {
+		$('#success').delay(5000).show().fadeOut('slow');
 	});
 </script>
 </html>

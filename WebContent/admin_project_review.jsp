@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -43,24 +43,21 @@
 	<%
 	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
+	<%String Tname = (String) session.getAttribute("TeacherName");
+	if(Tname == null){%>
 	<jsp:include page="admin_side_header.jsp"></jsp:include>
+	<%}else{ %>
+	<jsp:include page="faculty_side_header.jsp"></jsp:include>
+	<%} %>
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
-				<%
-				ResultSet resultset = DatabaseConnection
-						.getResultFromSqlQuery("select COUNT(status) from projectinfo where status='PENDING'");
-				resultset.next();
-				int count = resultset.getInt(1);
-				%>
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student Course details /
-					Announcements</div>
+					style="text-transform: uppercase">Project Management /
+					Project Approval & Feedback</div>
 				<div class="panel panel-secondary shadow p-3 mb-5">
-					<div class="panel-heading">
-						Approve Project&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;<a
-							class="btn btn-warning" href=""><span class="badge"><%=count%></span>
-							Pending</a>
+					<div class="panel-heading bg-info text-white">
+						Review Project&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="bg">
@@ -140,11 +137,13 @@
 										</fieldset>
 										<div class="form-group row">
 											<div class="col-sm-14">
+											&emsp;&emsp;
 												<button type="submit" class="btn btn-primary">Update</button>
-												&nbsp;&nbsp;
+												&emsp;&emsp;&emsp;&emsp;
 												<button type="reset" class="btn btn-warning">Clear</button>
-												&nbsp;&nbsp; <a href="AdminDashboard.html"><button
-														type="button" class="btn btn-danger">Cancel</button></a>
+												&emsp;&emsp; 
+											<!--  	<a href="admin_projects_dashboard.jsp"><button
+														type="button" class="btn btn-danger">Cancel</button></a>-->
 											</div>
 										</div>
 									</form>

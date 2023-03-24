@@ -16,16 +16,16 @@ import com.bean.Notes;
 import com.bean.Student;
 import com.bean.ProjectReport;
 
-public class DaoImpl implements Dao{
+public class DaoImpl implements Dao {
 
-	//private DatabaseConnection db = DatabaseConnection.db;
-	//private Connection con = db.getConnection();
-	 
+	// private DatabaseConnection db = DatabaseConnection.db;
+	// private Connection con = db.getConnection();
+
 	private PreparedStatement pst;
 	private Statement st;
 	private ResultSet rs;
 
- 	@Override
+	@Override
 	public boolean signUpStudent(Student s) {
 		String sql = "INSERT INTO studentinfo values (?,?,?,?,?,?,?)";
 		Connection con = null;
@@ -36,7 +36,7 @@ public class DaoImpl implements Dao{
 			e1.printStackTrace();
 		}
 		try {
-			
+
 			pst = con.prepareStatement(sql);
 			pst.setString(1, s.getUsn());
 			pst.setString(2, s.getName());
@@ -56,7 +56,7 @@ public class DaoImpl implements Dao{
 	}
 
 	@Override
-	public Student getStudent(String usn)  {
+	public Student getStudent(String usn) {
 		String sql = "SELECT * FROM STUDENTINFO WHERE USN = ?";
 		Student student = null;
 		Connection con = null;
@@ -67,7 +67,7 @@ public class DaoImpl implements Dao{
 			e1.printStackTrace();
 		}
 		try {
-			
+
 			pst = con.prepareStatement(sql);
 			pst.setString(1, usn);
 			rs = pst.executeQuery();
@@ -80,7 +80,7 @@ public class DaoImpl implements Dao{
 		}
 		return student;
 	}
-                  
+
 	@Override
 	public boolean registerProject(MyProject p) {
 		String sql = "INSERT INTO PROJECTINFO (usn,projecttitle,type,abstract,team) values (?,?,?,?,?)";
@@ -92,7 +92,7 @@ public class DaoImpl implements Dao{
 			e1.printStackTrace();
 		}
 		try {
-			
+
 			pst = con.prepareStatement(sql);
 			pst.setString(1, p.getUsn());
 			pst.setString(2, p.getPtitle());
@@ -147,7 +147,7 @@ public class DaoImpl implements Dao{
 			e1.printStackTrace();
 		}
 		try {
-			
+
 			pst = con.prepareStatement(sql);
 			pst.setString(1, status);
 			pst.setString(2, feedback);
@@ -160,7 +160,7 @@ public class DaoImpl implements Dao{
 		}
 		return false;
 	}
-             
+
 	@Override
 	public MyProject getProjectByID(int pid) {
 		String sql = "SELECT * FROM PROJECTINFO WHERE PID = ?";
@@ -199,7 +199,7 @@ public class DaoImpl implements Dao{
 		}
 		Student student = null;
 		try {
-			
+
 			pst = con.prepareStatement(sql);
 			pst.setString(1, email);
 			pst.setString(2, password);
@@ -215,7 +215,7 @@ public class DaoImpl implements Dao{
 	}
 
 	@Override
-	public List<MyProject> getProjectsByStatus(String status)  {
+	public List<MyProject> getProjectsByStatus(String status) {
 		String sql = "SELECT * FROM PROJECTINFO WHERE status = ?";
 		List<MyProject> pList = new ArrayList<>();
 		Connection con = null;
@@ -227,7 +227,7 @@ public class DaoImpl implements Dao{
 		}
 		MyProject project = null;
 		try {
-			
+
 			pst = con.prepareStatement(sql);
 			pst.setString(1, status);
 			rs = pst.executeQuery();
@@ -269,7 +269,35 @@ public class DaoImpl implements Dao{
 		}
 		return pList;
 	}
+	@Override
+	public List<MyProject> getSpecificeGuideProject(String allocated_guide) {
+		String sql = "SELECT * FROM PROJECTINFO WHERE Allocated_guide = ?";
+		List<MyProject> pList = new ArrayList<>();
+		Connection con = null;
+		try {
+			con = DatabaseConnection.getConnection();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		MyProject project = null;
+		try {
 
+			pst = con.prepareStatement(sql);
+			pst.setString(1, allocated_guide);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				project = new MyProject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+
+				pList.add(project);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pList;
+	}
+	
 	@Override
 	public List<MyProject> searchProject(String str) {
 		List<MyProject> allProjects = getAllProjects();
@@ -330,6 +358,7 @@ public class DaoImpl implements Dao{
 		}
 		return null;
 	}
+
 	@Override
 	public ResultSet getNotes(String fileName) {
 		String sql = "Select file from notes where FileName = ?";
@@ -343,7 +372,7 @@ public class DaoImpl implements Dao{
 		try {
 			pst = con.prepareStatement(sql);
 			pst.setString(1, fileName);
-			//pst.setString(2, title);
+			// pst.setString(2, title);
 			rs = pst.executeQuery();
 			return rs;
 		} catch (SQLException e) {
@@ -351,10 +380,11 @@ public class DaoImpl implements Dao{
 		}
 		return null;
 	}
+
 	@Override
 	public boolean addNotes(Notes notes) {
 		String sql = "INSERT INTO notes (Subject_code,Subject,FileName,Filetype,Upload_date,file) VALUES (?,?,?,?,?,?)";
-		
+
 		Connection con = null;
 		try {
 			con = DatabaseConnection.getConnection();
@@ -368,7 +398,7 @@ public class DaoImpl implements Dao{
 			pst.setString(2, notes.getSubject());
 			pst.setString(3, notes.getFilename());
 			pst.setString(4, notes.getFiletype());
-			pst.setDate(5,  notes.getCurrentDate());
+			pst.setDate(5, notes.getCurrentDate());
 			pst.setBytes(6, notes.getNotes());
 			int rows = pst.executeUpdate();
 			return rows == 1;
@@ -376,7 +406,59 @@ public class DaoImpl implements Dao{
 			e.printStackTrace();
 		}
 		return false;
-	} 
+	}
 
-}  
+	@Override
+	public List<MyProject> getProjectsByAllocatedFaculty() {
+		String sql = "select * from projectinfo where Allocated_guide IS NOT NULL";
+		List<MyProject> fList = new ArrayList<>();
+		Connection con = null;
+		try {
+			con = DatabaseConnection.getConnection();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		MyProject project = null;
+		try {
 
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				project = new MyProject(rs.getInt(1), rs.getString(3), rs.getString(5), rs.getString(6),
+						rs.getString(7), rs.getString(8), rs.getString(9));
+				fList.add(project);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return fList;
+	}
+	@Override
+	public List<MyProject> getProjectsByUnAllocatedFaculty() {
+		String sql = "select * from projectinfo where Allocated_guide IS  NULL";
+		List<MyProject> fList = new ArrayList<>();
+		Connection con = null;
+		try {
+			con = DatabaseConnection.getConnection();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		MyProject project = null;
+		try {
+
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				project = new MyProject(rs.getInt(1), rs.getString(3), rs.getString(5), rs.getString(6),
+						rs.getString(7), rs.getString(8), rs.getString(9));
+				fList.add(project);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return fList;
+	}
+
+}

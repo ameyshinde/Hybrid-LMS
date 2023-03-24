@@ -73,6 +73,8 @@
 				<a class="dropdown-item" href="approved">Show Approved Projects</a>
 				<a class="dropdown-item" href="rejected">Show Rejected Projects</a>
 				<a class="dropdown-item" href="showallprojects">Show All Projects</a>
+				<a class="dropdown-item" href="admin_allocated_project_guides.jsp">Show Allocated Project </a>
+				<a class="dropdown-item" href="admin_unallocated_project_guides.jsp">Show UnAllocated Project </a>
 			</div>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="all_sas_pdf_report.jsp">Reports</a></li>

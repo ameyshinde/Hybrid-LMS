@@ -1,6 +1,10 @@
 package com.projects;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,12 +17,14 @@ import javax.servlet.http.HttpSession;
 
 import com.dao.Dao;
 import com.dao.DaoImpl;
+import com.attendance.DatabaseConnection;
 import com.bean.MyProject;
 
 /**
  * Servlet implementation class AdminAction
  */
-@WebServlet(urlPatterns = { "/pending", "/approved", "/rejected", "/update", "/viewproject", "/showallprojects" })
+@WebServlet(urlPatterns = { "/pending", "/approved", "/rejected", "/update", "/viewproject", "/showallprojects",
+		"/allocateguide", "/showspecificguidesprojects" })
 public class AdminActions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -63,12 +69,23 @@ public class AdminActions extends HttpServlet {
 			int id = Integer.parseInt(session.getAttribute("id").toString());
 			status = request.getParameter("status").toUpperCase();
 			String feedback = request.getParameter("feedback");
-			if (dao.updateProject(id, status, feedback)) {
-				session.setAttribute("msg", "Project Updates Sent successfully");
-				response.sendRedirect("admin_projects_dashboard.jsp");
+			String tname = (String) session.getAttribute("TeacherName");
+			if (tname != null) {
+				if (dao.updateProject(id, status, feedback)) {
+					session.setAttribute("msg", "Project Updates Sent successfully");
+					response.sendRedirect("showspecificguidesprojects");
+				} else {
+					session.setAttribute("msg", "Something went wrong");
+					response.sendRedirect("showspecificguidesprojects");
+				}
 			} else {
-				session.setAttribute("msg", "Something went wrong");
-				response.sendRedirect("admin_projects_dashboard.jsp");
+				if (dao.updateProject(id, status, feedback)) {
+					session.setAttribute("msg", "Project Updates Sent successfully");
+					response.sendRedirect("admin_projects_dashboard.jsp");
+				} else {
+					session.setAttribute("msg", "Something went wrong");
+					response.sendRedirect("admin_projects_dashboard.jsp");
+				}
 			}
 		} else if (url.endsWith("showallprojects")) {
 			list = dao.getAllProjects();
@@ -76,7 +93,46 @@ public class AdminActions extends HttpServlet {
 			request.setAttribute("projects", list);
 			RequestDispatcher rd = request.getRequestDispatcher("admin_showall_projects.jsp");
 			rd.forward(request, response);
+		} else if (url.endsWith("showspecificguidesprojects")) {
+			String allocated_guide = (String) session.getAttribute("TeacherName");
+			list = dao.getSpecificeGuideProject(allocated_guide);
+			session.setAttribute("status", "All");
+			request.setAttribute("projects", list);
+			RequestDispatcher rd = request.getRequestDispatcher("faculty_show_guide_projects.jsp");
+			rd.forward(request, response);
 		}
+
+		else if (url.endsWith("allocateguide")) {
+			Connection con = null;
+			try {
+				con = DatabaseConnection.getConnection();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			int projectId = Integer.parseInt(request.getParameter("projectId"));
+			System.out.println("the recieved proj id" + projectId);
+
+			String guideName = request.getParameter("facultyName");
+			String sql = "UPDATE projectinfo set Allocated_guide=? where pid=?";
+			try {
+				PreparedStatement pst = con.prepareStatement(sql);
+				pst.setString(1, guideName);
+				pst.setInt(2, projectId);
+				int count = pst.executeUpdate();
+				if (count > 1) {
+					session.setAttribute("msg", "Project Guide Allocated successfully");
+					response.sendRedirect("admin_allocated_project_guides.jsp");
+				} else {
+					session.setAttribute("msg", "Something went wrong");
+					response.sendRedirect("admin_allocated_project_guides.jsp");
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -85,4 +141,3 @@ public class AdminActions extends HttpServlet {
 	}
 
 }
-
