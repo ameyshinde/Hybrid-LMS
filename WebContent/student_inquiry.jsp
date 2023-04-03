@@ -71,7 +71,7 @@
 														<div class="col-8">
 															<textarea id="message" name="message" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="4" cols="30"></textarea>
+																rows="4" cols="30" required></textarea>
 														</div>
 													</div>
 													<div class="form-group row">

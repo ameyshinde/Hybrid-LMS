@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -108,14 +108,6 @@
 															<input id="uname" name="" placeholder=""
 																class="form-control here" required="required"
 																type="text" value="<%=rs.getString(6)%>" disabled>
-														</div>
-													</div>
-													<div class="form-group row">
-														<label for="password" class="col-4 col-form-label">Password</label>
-														<div class="col-8">
-															<input id="password" name="" placeholder=""
-																class="form-control here" type="text"
-																value="<%=rs.getString(7)%>" disabled>
 														</div>
 													</div>
 													<div class="form-group row">

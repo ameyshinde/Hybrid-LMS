@@ -127,7 +127,7 @@
 															Password </label>
 														<div class="col-8">
 															<input id="cpassword" name="cpassword" placeholder=""
-																class="form-control here" type="text"
+																class="form-control here" type="password"
 																value="<%=rs.getString(1)%>" readonly>
 														</div>
 													</div>

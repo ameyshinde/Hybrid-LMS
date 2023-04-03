@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -23,17 +23,29 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
 	<jsp:include page="admin_side_header.jsp"></jsp:include>
 	<div class="container-fluid shadow p-3 mb-5">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
-				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">My Profile</div>
+				<div class="alert alert-info shadow p-3 mb-5"
+					style="text-transform: uppercase">My Profile</div>
+				<%
+				String successUpdate = (String) session.getAttribute("update-success-message");
+				if (successUpdate != null) {
+					session.removeAttribute("update-success-message");
+				%>
+				<div class="alert alert-success" id='success'>Email updated
+					successfully.</div>
+				<%
+				}
+				%>
 				<div class="panel panel shadow p-3 mb-5">
-					<div class="panel-heading bg-light" style="text-transform: uppercase;font-size:small;font-weight: bold;">
+					<div class="panel-heading bg-light"
+						style="text-transform: uppercase; font-size: small; font-weight: bold;">
 						My Profile&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
@@ -43,11 +55,10 @@
 									<div class="card-body">
 										<div class="row">
 											<%
-												Connection con = DatabaseConnection.getConnection();
-													Statement st = con.createStatement();
-													ResultSet rs = st
-															.executeQuery("select * from admin where uname='" + session.getAttribute("uname") + "'");
-													if (rs.next()) {
+											Connection con = DatabaseConnection.getConnection();
+											Statement st = con.createStatement();
+											ResultSet rs = st.executeQuery("select * from admin where uname='" + session.getAttribute("uname") + "'");
+											if (rs.next()) {
 											%>
 											<div class="col-md-12">
 												<h4>My Profile</h4>
@@ -56,14 +67,14 @@
 										</div>
 										<div class="row">
 											<div class="col-md-12">
-												<form>
+												<form action="admin_update_process.jsp" method="post">
 													<div class="form-group row">
 														<label for="Id" class="col-4 col-form-label">Your
 															Id</label>
 														<div class="col-8">
-															<input id="id" name="" placeholder=""
+															<input id="id" name="adminID" placeholder=""
 																class="form-control here" type="text"
-																value="<%=rs.getInt(1)%>" disabled>
+																value="<%=rs.getInt(1)%>" readonly>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -79,9 +90,9 @@
 													<div class="form-group row">
 														<label for="email" class="col-4 col-form-label">Email</label>
 														<div class="col-8">
-															<input id="email" name="" placeholder=""
+															<input id="email" name="email" placeholder=""
 																class="form-control here" type="text"
-																value="<%=rs.getString(3)%>" disabled>
+																value="<%=rs.getString(3)%>">
 														</div>
 													</div>
 													<div class="form-group row">
@@ -93,18 +104,12 @@
 																type="text" value="<%=rs.getString(4)%>" disabled>
 														</div>
 													</div>
-													<div class="form-group row">
-														<label for="password" class="col-4 col-form-label">Password</label>
-														<div class="col-8">
-															<input id="password" name="" placeholder=""
-																class="form-control here" type="text"
-																value="<%=rs.getString(5)%>" disabled>
-														</div>
-													</div>
+													<input type="submit" class="btn btn-primary"
+														value="Update Information">
 												</form>
 											</div>
 											<%
-												}
+											}
 											%>
 										</div>
 									</div>
@@ -117,9 +122,14 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 </body>
+<script type="text/javascript">
+	$(function() {
+		$('#success').delay(5000).show().fadeOut('slow');
+	});
+</script>
 </html>

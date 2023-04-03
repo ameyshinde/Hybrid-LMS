@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -68,7 +68,7 @@
 														<div class="col-8">
 															<textarea id="message" name="message" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="4" cols="30"></textarea>
+																rows="4" cols="30" required></textarea>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -76,7 +76,7 @@
 															of Days</label>
 														<div class="col-8">
 															<select id="days" name="days" class="form-control here"
-																value="">
+																value="" required>
 																<option>1</option>
 																<option>2</option>
 																<option>3</option>

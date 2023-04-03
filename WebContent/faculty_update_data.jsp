@@ -62,12 +62,13 @@
 									value="<%=resultSet.getString(4)%>">
 							</div>
 							<div class="form-group">
-								<label for="mobile">Mobile:</label> <input type="text"
-									class="form-control" id="mobile" name="mobile"
+								<label for="mobile">Mobile:</label> <input type="tel"
+									class="form-control" id="mobile" name="mobile" maxlength="10"
+									title="Please use a 10 digit telephone number with no dashes or dots"
 									value="<%=resultSet.getString(3)%>">
 							</div>
 							<div class="form-group">
-								<label for="email">Email:</label> <input type="text"
+								<label for="email">Email:</label> <input type="email"
 									class="form-control" id="email" name="email"
 									value="<%=resultSet.getString(5)%>">
 							</div>

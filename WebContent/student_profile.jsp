@@ -119,14 +119,6 @@
 																type="text" value="<%=rs.getString(8)%>" disabled>
 														</div>
 													</div>
-													<div class="form-group row">
-														<label for="password" class="col-4 col-form-label">Password</label>
-														<div class="col-8">
-															<input id="password" name="" placeholder=""
-																class="form-control here" type="text"
-																value="<%=rs.getString(9)%>" disabled>
-														</div>
-													</div>
 												</form>
 											</div>
 											<%

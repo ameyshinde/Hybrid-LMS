@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -23,37 +23,48 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
 	<jsp:include page="admin_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">Faculty Activity / Faculty
+				<div class="alert alert-info shadow p-3 mb-5"
+					style="text-transform: uppercase">Faculty Activity / Faculty
 					Registration</div>
 				<%
-					String success = (String) session.getAttribute("success-message");
-						if (success != null) {
-							session.removeAttribute("success-message");
+				String success = (String) session.getAttribute("success-message");
+				if (success != null) {
+					session.removeAttribute("success-message");
 				%>
 				<div class='alert alert-success' id='success'>Faculty Register
 					Successfully.</div>
 				<%
-					}
-						String fail = (String) session.getAttribute("fail-message");
-						if (fail != null) {
-							session.removeAttribute("fail-message");
+				}
+				String fail = (String) session.getAttribute("fail-message");
+				if (fail != null) {
+				session.removeAttribute("fail-message");
 				%>
 				<div class="alert alert-danger" id='danger'>Faculty
 					Registration Fail,Please try again</div>
 				<%
-					}
+				}
+				String regifail = (String) session.getAttribute("duplicate-message");
+				if (regifail != null) {
+				session.removeAttribute("fail-message");
+				%>
+				<div class="alert alert-danger" id='danger'>User Name Already
+					Exists,Please Choose Unique User Name</div>
+				<%
+				}
 				%>
 				<div class="panel panel shadow p-3 mb-5 ">
-					<div class="panel-heading bg-light" style="text-transform: uppercase">
-						<strong>Faculty Registration &nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;</strong>
+					<div class="panel-heading bg-light"
+						style="text-transform: uppercase">
+						<strong>Faculty Registration &nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						</strong>
 					</div>
 					<div class="panel-body">
 						<form action="FacultyRegistration" method="post">
@@ -71,13 +82,14 @@
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="mobile">Mobile:</label> <input type="text"
-										class="form-control" id="mobile" name="mobile"
+									<label for="mobile">Mobile:</label> <input type="tel"
+										class="form-control" id="mobile" name="mobile" maxlength="10"
+										title="Please use a 10 digit telephone number with no dashes or dots"
 										placeholder="Mobile No." required>
 								</div>
-	
+
 								<div class="form-group col-md-6">
-									<label for="email">Email Id:</label> <input type="text"
+									<label for="email">Email Id:</label> <input type="email"
 										class="form-control" id="email" name="email"
 										placeholder="Email Id" required>
 								</div>
@@ -104,9 +116,9 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 </body>
 <script type="text/javascript">

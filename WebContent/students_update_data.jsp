@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -24,26 +24,30 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
 	<jsp:include page="admin_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">Students Activity / Students
-					Data</div>
+				<div class="alert alert-info shadow p-3 mb-5"
+					style="text-transform: uppercase">Students Activity /
+					Students Data</div>
 				<div class="panel panel shadow p-3 mb-5">
-					<div class="panel-heading bg-light" style="text-transform: uppercase""><strong>Student Information For Update</strong></div>
+					<div class="panel-heading bg-light"
+						style="text-transform: uppercase"">
+						<strong>Student Information For Update</strong>
+					</div>
 					<div class="panel-body">
 						<%
-							String student_id = request.getParameter("student_id");
-								Connection con = DatabaseConnection.getConnection();
-								Statement statement = con.createStatement();
-								String sql = "select * from students where student_id=" + student_id;
-								ResultSet resultSet = statement.executeQuery(sql);
-								while (resultSet.next()) {
+						String student_id = request.getParameter("student_id");
+						Connection con = DatabaseConnection.getConnection();
+						Statement statement = con.createStatement();
+						String sql = "select * from students where student_id=" + student_id;
+						ResultSet resultSet = statement.executeQuery(sql);
+						while (resultSet.next()) {
 						%>
 						<form action="students_update_process.jsp" method="post">
 							<div class="form-group">
@@ -62,8 +66,9 @@
 									value="<%=resultSet.getString(3)%>">
 							</div>
 							<div class="form-group">
-								<label for="mobile">Mobile:</label> <input type="text"
-									class="form-control" id="mobile" name="mobile"
+								<label for="mobile">Mobile:</label> <input type="tel"
+									class="form-control" id="mobile" name="mobile" maxlength="10"
+									title="Please use a 10 digit telephone number with no dashes or dots"
 									value="<%=resultSet.getString(5)%>">
 							</div>
 							<div class="form-group">
@@ -72,7 +77,7 @@
 									value="<%=resultSet.getString(6)%>">
 							</div>
 							<div class="form-group">
-								<label for="email">Email:</label> <input type="text"
+								<label for="email">Email:</label> <input type="email"
 									class="form-control" id="email" name="email"
 									value="<%=resultSet.getString(7)%>">
 							</div>
@@ -80,7 +85,7 @@
 								value="Update Information">
 						</form>
 						<%
-							}
+						}
 						%>
 					</div>
 				</div>
@@ -88,9 +93,9 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 
 </body>

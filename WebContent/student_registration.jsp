@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -51,6 +51,14 @@
 					Registration Fail,Please try again</div>
 				<%
 				}
+				String regifail = (String) session.getAttribute("duplicate-message");
+				if (regifail != null) {
+				session.removeAttribute("fail-message");
+				%>
+				<div class="alert alert-danger" id='danger'>User Name Already
+					Exists,Please Choose Unique User Name</div>
+				<%
+				}
 				%>
 				<div class="panel panel shadow p-3 mb-5 ">
 					<div class="panel-heading bg-light"
@@ -74,18 +82,19 @@
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="mobile">Mobile:</label> <input type="text"
-										class="form-control" id="mobile" name="mobile"
-										placeholder="Mobile No." required>
+									<label for="mobile">Mobile:</label> <input type="tel"
+										class="form-control" id="mobile" name="mobile" maxlength="10"
+										title="Please use a 10 digit telephone number with no dashes or dots"
+										pattern="[1-9]{1}[0-9]{9}" placeholder="Mobile No." required>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="collegeName">Branch Name:</label> <input
 										type="text" class="form-control" id="branchName"
 										name="branchName" placeholder="Branch Name" required>
 								</div>
-	
+
 								<div class="form-group col-md-6">
-									<label for="email">Email Id:</label> <input type="text"
+									<label for="email">Email Id:</label> <input type="email"
 										class="form-control" id="email" name="email"
 										placeholder="Email Id" required>
 								</div>
@@ -96,7 +105,7 @@
 								<textarea class="form-control" id="address" name="address"
 									placeholder="Address" required></textarea>
 							</div>
-							
+
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="uname">User Name:</label> <input type="text"

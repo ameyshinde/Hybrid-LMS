@@ -70,7 +70,7 @@
 														<div class="col-8">
 															<textarea id="subject" name="subject" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="1" cols="10"></textarea>
+																rows="1" cols="10" required></textarea>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -79,7 +79,7 @@
 														<div class="col-8">
 															<textarea id="notice" name="notice" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="4" cols="30"></textarea>
+																rows="4" cols="30" required></textarea>
 														</div>
 													</div>
 													<div class="form-group row">
