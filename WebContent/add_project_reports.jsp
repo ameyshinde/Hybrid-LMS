@@ -44,8 +44,8 @@
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student Course details /
-					Projects</div>
+					style="text-transform: uppercase">Project section /
+					Add Project report</div>
 				<%
 				String sentproject = (String) session.getAttribute("msg");
 				if (sentproject != null) {

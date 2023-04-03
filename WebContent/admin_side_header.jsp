@@ -49,7 +49,7 @@
 				
 			</div></li>
 
-		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+	<!--  	<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbardrop" data-toggle="dropdown">Attendance
 				Reports</a>
 			<div class="dropdown-menu">
@@ -57,7 +57,8 @@
 				<a class="dropdown-item" href="check_daily_attendance.jsp">Daily Attendance Report</a>
 			    <a class="dropdown-item" href="monthly_attendance_report.jsp">Monthly Attendance Report</a>
 			</div>
-		</li>
+		</li> -->
+		
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbardrop" data-toggle="dropdown">Leave Management</a>
 			<div class="dropdown-menu">
@@ -73,8 +74,8 @@
 				<a class="dropdown-item" href="approved">Show Approved Projects</a>
 				<a class="dropdown-item" href="rejected">Show Rejected Projects</a>
 				<a class="dropdown-item" href="showallprojects">Show All Projects</a>
-				<a class="dropdown-item" href="admin_allocated_project_guides.jsp">Show Allocated Project </a>
-				<a class="dropdown-item" href="admin_unallocated_project_guides.jsp">Show UnAllocated Project </a>
+				<a class="dropdown-item" href="admin_allocated_project_guides.jsp">Show Guide Allocated Projects </a>
+				<a class="dropdown-item" href="admin_unallocated_project_guides.jsp">Show Guide UnAllocated Project </a>
 			</div>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="all_sas_pdf_report.jsp">Reports</a></li>

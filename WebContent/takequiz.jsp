@@ -86,8 +86,10 @@
 
 											ResultSet rs2 = ps2.executeQuery();
 											java.util.ArrayList list = new java.util.ArrayList();
+											String subject="";
 											while (rs2.next()) {
 												Question q = new Question();
+												subject = rs2.getString(8);
 												q.setSno(rs2.getInt(1));
 												q.setQuestion(rs2.getString(2));
 												q.setAns1(rs2.getString(3));
@@ -98,6 +100,7 @@
 												list.add(q);
 											}
 											session.setAttribute("dbdata", list);
+											session.setAttribute("Subject",subject);
 											conn.close();
 										%>
 										<jsp:forward page="answersubmit.jsp"></jsp:forward>

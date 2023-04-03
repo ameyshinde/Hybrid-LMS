@@ -37,10 +37,11 @@ public class saveQuiz extends HttpServlet {
 		System.out.println("The username "+ uname +" is on the question " +sno);
 		String atmt_ans = request.getParameter("myradio");
 		String correct = request.getParameter("correct");
-
+		String subject = (String) session.getAttribute("Subject");
+		System.out.println(subject);
 		try {
 			Connection connection = DatabaseConnection.getConnection();
-			String query = "insert into quiz_answers values(?,?,?,?)";
+			String query = "insert into quiz_answers values(?,?,?,?,?)";
 			String e = "";
 			PreparedStatement st = connection.prepareStatement(query);
 			if (((String) request.getParameter("myradio")) == null) {
@@ -49,12 +50,14 @@ public class saveQuiz extends HttpServlet {
 				st.setString(2,uname);
 				st.setString(3, e);
 				st.setString(4, correct);
+				st.setString(5, subject);
 			} else {
 				e = atmt_ans;
 				st.setInt(1, sno);
 				st.setString(2,uname);
 				st.setString(3, e);
 				st.setString(4, correct);
+				st.setString(5, subject);
 			}
 			st.executeUpdate();
 			ArrayList<Integer> list = new ArrayList<>();

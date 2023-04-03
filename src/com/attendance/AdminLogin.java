@@ -32,6 +32,7 @@ public class AdminLogin extends HttpServlet {
 					.executeQuery("select * from admin where uname='" + uname + "' AND password='" + pass + "'");
 			if (resultset.next()) {
 				hs.setAttribute("uname", uname);
+				hs.setAttribute("TeacherName", resultset.getString(2));
 				response.sendRedirect("after_adminLogin.jsp?_tokens='" + tokens + "'");
 			} else {
 				String message = "You have enter wrong credentials";

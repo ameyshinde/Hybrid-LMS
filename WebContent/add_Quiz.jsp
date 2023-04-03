@@ -83,7 +83,7 @@
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
-						Send Quiz&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
+						Save Quiz&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]&nbsp;&nbsp;
 					</div>
 					<div class="panel-body">
 						<div class="row">

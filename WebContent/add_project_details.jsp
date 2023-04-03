@@ -34,7 +34,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student action / Add
+					style="text-transform: uppercase">Projects Section / Add
 					Project Details</div>
 				<%
 				String sentnotice = (String) session.getAttribute("project-apply");

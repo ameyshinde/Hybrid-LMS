@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -101,7 +101,7 @@
 										<td><%=rs.getString(6)%></td>
 										<td><span class="label label-danger"><%=rs.getString(5)%></span></td>
 										<td><a href="ManageLeaves?id=<%=rs.getInt(1)%>"
-											class="btn btn-primary">Approve Leave</a>&nbsp;<a
+											class="btn btn-primary">Approve Leave</a>&nbsp;&emsp;&nbsp;&nbsp;<a
 											href="reject_student_leaves.jsp?id=<%=rs.getInt(1)%>"
 											class="btn btn-danger">Reject</a></td>
 									</tr>

@@ -50,7 +50,7 @@
 				int count = resultset.getInt(1);
 				%>
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Student Course details /
+					style="text-transform: uppercase">Projects Section /
 					Show Projects</div>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">

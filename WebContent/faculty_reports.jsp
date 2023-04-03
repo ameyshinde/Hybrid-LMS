@@ -34,8 +34,8 @@
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
 				<div class="alert alert-info shadow p-3 mb-5"
-					style="text-transform: uppercase">Learning Management System All
-					Reports</div>
+					style="text-transform: uppercase">Learning Management System
+					All Reports</div>
 				<div class="panel panel shadow p-3 mb-5">
 					<div class="panel-heading bg-light"
 						style="text-transform: uppercase; font-size: small; font-weight: bold;">
@@ -56,6 +56,13 @@
 										<th>All Students Report</th>
 										<td><input type="submit" value="Generate Reports"
 											class="btn btn-info"></td>
+									</tr>
+								</form>
+								<form action="TestQuizReport">
+									<tr>
+										<th>Quiz Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-danger"></td>
 									</tr>
 								</form>
 							</tbody>

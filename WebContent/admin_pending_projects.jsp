@@ -149,5 +149,8 @@
 			}
 		}
 	});
+	$(function() {
+		$('#success').delay(5000).show().fadeOut('slow');
+	});
 </script>
 </html>

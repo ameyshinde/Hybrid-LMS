@@ -118,5 +118,8 @@
 	$(document).ready(function() {
 		$('#table').DataTable();
 	})
+	$(function() {
+		$('#danger').delay(2000).show().fadeOut('slow');
+	});
 </script>
 </html>

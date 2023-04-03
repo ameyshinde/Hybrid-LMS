@@ -171,25 +171,32 @@ public class FileActions extends HttpServlet {
 			}
 		} else if (url.endsWith("visualreport")) {
 			int phase = Integer.parseInt(request.getParameter("phase"));
-			
-				ResultSet rs = DatabaseConnection.getResultFromSqlQuery("select * from reports where phase=" + phase);
-				try {
-					while (rs.next()) {
-						String fileName = rs.getString("report");
-						int curr_phase = rs.getInt("phase");
-						session.setAttribute("curr_phase", curr_phase);
-						session.setAttribute("fileName", fileName);
-					}
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+			String projtitle = (String) session.getAttribute("title");
+			session.removeAttribute("fileName");
+			ResultSet rs = DatabaseConnection.getResultFromSqlQuery(
+					"select * from `reports` where `phase` = " + phase + " AND `title` = '" + projtitle + "'");
+			try {
+				while (rs.next()) {
+					String fileName = rs.getString("report");
+					System.out.println("fetched from datatbase the fileName"+fileName);
+					int curr_phase = rs.getInt("phase");
+					session.setAttribute("curr_phase", curr_phase);
+					session.setAttribute("fileName", fileName);
 				}
-				int curr_phase = Integer.parseInt(session.getAttribute("curr_phase").toString());
-				int phaser = Integer.parseInt(request.getParameter("phase"));
-				if (phaser == curr_phase) {
-				String title = session.getAttribute("title").toString();
-				
-				String fileName = session.getAttribute("fileName").toString();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Object currPhaseObj = session.getAttribute("curr_phase");
+			if (currPhaseObj != null) {
+			int curr_phase = Integer.parseInt(session.getAttribute("curr_phase").toString());
+			//System.out.println("from database fecthed"+curr_phase);
+			int phaser = Integer.parseInt(request.getParameter("phase"));
+			//System.out.println("from request parameter"+phaser);
+			String title = session.getAttribute("title").toString();
+			String fileName = (String) session.getAttribute("fileName");
+			System.out.println(fileName);
+			if (phaser == curr_phase && title != null && fileName != null) {
 				System.out.println(fileName);
 				String path = getServletContext().getRealPath("") + "projectreports" + File.separator + fileName;
 				System.out.println(path);
@@ -233,6 +240,10 @@ public class FileActions extends HttpServlet {
 					}
 				}
 			} else {
+				session.setAttribute("lmsg", "Project Report not found.");
+				response.sendRedirect("select_projectphase.jsp");
+			}
+			}else {
 				session.setAttribute("lmsg", "Project Report not found.");
 				response.sendRedirect("select_projectphase.jsp");
 			}

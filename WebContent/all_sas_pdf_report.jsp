@@ -25,19 +25,20 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css " />
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
 	<jsp:include page="admin_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
-				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">Attendance System All
-					Reports</div>
+				<div class="alert alert-info shadow p-3 mb-5"
+					style="text-transform: uppercase">Admin System All Reports</div>
 				<div class="panel panel shadow p-3 mb-5">
-					<div class="panel-heading bg-light" style="text-transform: uppercase;font-size:small;font-weight: bold;">
-						Attendance System All Reports &nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]
+					<div class="panel-heading bg-info"
+						style="text-transform: uppercase; font-size: small; font-weight: bold;">
+						Hybrid LMS All Reports &nbsp;[&nbsp;<%=(new java.util.Date()).toLocaleString()%>&nbsp;]
 					</div>
 					<div class="panel-body">
 						<table id="table" class="table table-bordered">
@@ -52,6 +53,13 @@
 								<form action="AllStudentsRegisterReport">
 									<tr>
 										<th>All Students Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-info"></td>
+									</tr>
+								</form>
+								<form action="AllFacultyRegisterReport">
+									<tr>
+										<th>All Faculty Report</th>
 										<td><input type="submit" value="Generate Reports"
 											class="btn btn-info"></td>
 									</tr>
@@ -74,7 +82,28 @@
 									<tr>
 										<th>Approved Leave Report</th>
 										<td><input type="submit" value="Generate Reports"
+											class="btn btn-warning"></td>
+									</tr>
+								</form>
+								<form action="ProjectGuideReport">
+									<tr>
+										<th>Allocated Project Guide Report</th>
+										<td><input type="submit" value="Generate Reports"
 											class="btn btn-danger"></td>
+									</tr>
+								</form>
+								<form action="QuizReport">
+									<tr>
+										<th>Quiz Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-success"></td>
+									</tr>
+								</form>
+								<form action="AptitudeReport">
+									<tr>
+										<th>Aptitude Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-success"></td>
 									</tr>
 								</form>
 							</tbody>
@@ -85,9 +114,9 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 </body>
 <script src="../js/jquery.js"></script>

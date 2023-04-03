@@ -41,7 +41,7 @@
 </head>
 <body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
 	<jsp:include page="admin_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
@@ -55,11 +55,11 @@
 					<div class="shadow p-3 mb-5 bg-white rounded text-center">
 						<i class="fa fa-users fa-5x"></i>
 						<%
-							Connection con = DatabaseConnection.getConnection();
-								Statement st = con.createStatement();
-								ResultSet rs = st.executeQuery("select count(*) from students");
-								rs.next();
-								int students = rs.getInt(1);
+						Connection con = DatabaseConnection.getConnection();
+						Statement st = con.createStatement();
+						ResultSet rs = st.executeQuery("select count(*) from students");
+						rs.next();
+						int students = rs.getInt(1);
 						%>
 						<h3>
 							<font color="#FF9933"><span class="counter"><%=students%></span></font>
@@ -73,11 +73,11 @@
 					<div class="shadow p-3 mb-5 bg-white rounded text-center">
 						<i class="fa fa-user fa-5x"></i>
 						<%
-							Statement statement = con.createStatement();
-								ResultSet resultSet = statement.executeQuery(
-										"select count(attendance) from student_attendance where attendance='present' and system_date=CURDATE()");
-								resultSet.next();
-								int presentStudents = resultSet.getInt(1);
+						Statement statement = con.createStatement();
+						ResultSet resultSet = statement.executeQuery(
+								"select count(attendance) from student_attendance where attendance='present' and system_date=CURDATE()");
+						resultSet.next();
+						int presentStudents = resultSet.getInt(1);
 						%>
 						<h3>
 							<font color="#FF9933"><span class="counter"><%=presentStudents%></span></font>
@@ -91,11 +91,11 @@
 					<div class="shadow p-3 mb-5 bg-white rounded text-center">
 						<i class="fa fa-recycle fa-5x"></i>
 						<%
-							Statement stmt = con.createStatement();
-								ResultSet result = stmt.executeQuery(
-										"select count(attendance) from student_attendance where attendance='absent' and system_date=CURDATE()");
-								result.next();
-								int absentStudents = result.getInt(1);
+						Statement stmt = con.createStatement();
+						ResultSet result = stmt.executeQuery(
+								"select count(attendance) from student_attendance where attendance='absent' and system_date=CURDATE()");
+						result.next();
+						int absentStudents = result.getInt(1);
 						%>
 
 						<h3>
@@ -110,10 +110,10 @@
 					<div class="shadow p-3 mb-5 bg-white rounded text-center">
 						<i class="fa fa-bars fa-5x"></i>
 						<%
-							Statement stmtfeedback = con.createStatement();
-								ResultSet resultFeedback = stmtfeedback.executeQuery("select count(*) from student_feedback");
-								resultFeedback.next();
-								int feedbackStudents = resultFeedback.getInt(1);
+						Statement stmtfeedback = con.createStatement();
+						ResultSet resultFeedback = stmtfeedback.executeQuery("select count(*) from student_feedback");
+						resultFeedback.next();
+						int feedbackStudents = resultFeedback.getInt(1);
 						%>
 						<h3>
 							<font color="#FF9933"><span class="counter"><%=feedbackStudents%></span></font>
@@ -127,10 +127,10 @@
 					<div class="shadow p-3 mb-5 bg-white rounded text-center">
 						<i class="fa fa-bars fa-5x"></i>
 						<%
-							Statement stmtactive = con.createStatement();
-								ResultSet resultActive = stmtactive.executeQuery("select count(*) from students where status=1");
-								resultActive.next();
-								int activeStudents = resultActive.getInt(1);
+						Statement stmtactive = con.createStatement();
+						ResultSet resultActive = stmtactive.executeQuery("select count(*) from students where status=1");
+						resultActive.next();
+						int activeStudents = resultActive.getInt(1);
 						%>
 						<h3>
 							<font color="#FF9933"><span class="counter"><%=activeStudents%></span></font>
@@ -144,10 +144,10 @@
 					<div class="shadow p-3 mb-5 bg-white rounded text-center">
 						<i class="fa fa-bars fa-5x"></i>
 						<%
-							Statement stmtInactive = con.createStatement();
-								ResultSet resultInactive = stmtInactive.executeQuery("select count(*) from students where status=0");
-								resultInactive.next();
-								int inactiveStudents = resultInactive.getInt(1);
+						Statement stmtInactive = con.createStatement();
+						ResultSet resultInactive = stmtInactive.executeQuery("select count(*) from students where status=0");
+						resultInactive.next();
+						int inactiveStudents = resultInactive.getInt(1);
 						%>
 						<h3>
 							<font color="#FF9933"><span class="counter"><%=inactiveStudents%></span></font>
@@ -161,11 +161,11 @@
 					<div class="shadow p-3 mb-5 bg-white rounded text-center">
 						<i class="fa fa-bars fa-5x"></i>
 						<%
-							Statement stmtApprovedLeaves = con.createStatement();
-								ResultSet resultApprovedLeaves = stmtApprovedLeaves
-										.executeQuery("select count(*) from student_leave where leave_status='Approved' ");
-								resultApprovedLeaves.next();
-								int approvedLeaveStudents = resultApprovedLeaves.getInt(1);
+						Statement stmtApprovedLeaves = con.createStatement();
+						ResultSet resultApprovedLeaves = stmtApprovedLeaves
+								.executeQuery("select count(*) from student_leave where leave_status='Approved' ");
+						resultApprovedLeaves.next();
+						int approvedLeaveStudents = resultApprovedLeaves.getInt(1);
 						%>
 						<h3>
 							<font color="#FF9933"><span class="counter"><%=approvedLeaveStudents%></span></font>
@@ -179,11 +179,11 @@
 					<div class="shadow p-3 mb-5 bg-white rounded text-center">
 						<i class="fa fa-recycle fa-5x"></i>
 						<%
-							Statement stmtPendingLeaves = con.createStatement();
-								ResultSet resultPendingLeaves = stmtPendingLeaves
-										.executeQuery("select count(*) from student_leave where leave_status='Pending'");
-								resultPendingLeaves.next();
-								int pedingLeaveStudents = resultPendingLeaves.getInt(1);
+						Statement stmtPendingLeaves = con.createStatement();
+						ResultSet resultPendingLeaves = stmtPendingLeaves
+								.executeQuery("select count(*) from student_leave where leave_status='Pending'");
+						resultPendingLeaves.next();
+						int pedingLeaveStudents = resultPendingLeaves.getInt(1);
 						%>
 
 						<h3>
@@ -278,6 +278,20 @@
 											class="btn btn-warning"></td>
 									</tr>
 								</form>
+								<form action="QuizReport">
+									<tr>
+										<th>Quiz Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-warning"></td>
+									</tr>
+								</form>
+								<form action="AptitudeReport">
+									<tr>
+										<th>Aptitude Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-warning"></td>
+									</tr>
+								</form>
 							</tbody>
 						</table>
 					</div>
@@ -286,12 +300,13 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 	<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+	<script
+		src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
 	<script src="js/jquery.counterup.min.js"></script>
 </body>
 </html>
