@@ -106,6 +106,13 @@
 											class="btn btn-success"></td>
 									</tr>
 								</form>
+								<form action="AdminFeeReport">
+									<tr>
+										<th>Fees Report</th>
+										<td><input type="submit" value="Generate Reports"
+											class="btn btn-success"></td>
+									</tr>
+								</form>
 							</tbody>
 						</table>
 					</div>

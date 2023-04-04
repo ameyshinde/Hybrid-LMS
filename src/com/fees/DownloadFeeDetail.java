@@ -1,4 +1,4 @@
-package com.notes;
+package com.fees;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/download")
-public class DownloadServlet extends HttpServlet {
+@WebServlet("/downloadFeeDetail")
+public class DownloadFeeDetail extends HttpServlet {
 
 	public int BUFFER_SIZE = 1024 * 1000; // 100MB
 
@@ -22,7 +22,7 @@ public class DownloadServlet extends HttpServlet {
 
 		String fileName = request.getParameter("fileName");
 
-		String path = getServletContext().getRealPath("") + "files" + File.separator + fileName;
+		String path = getServletContext().getRealPath("") + "fees" + File.separator + fileName;
 
 		System.out.println(path);
 

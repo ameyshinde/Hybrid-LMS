@@ -15,21 +15,29 @@
 			href="#" id="navbardrop" data-toggle="dropdown"> Students Course
 				Details </a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="students_announcement.jsp">Student Announcement/Notification</a> 
-				<a class="dropdown-item" href="selectexam.jsp">Student Available Test</a>
-				<a class="dropdown-item" href="noteslist.jsp">Access Study Material</a>
-				<a class="dropdown-item" href="students_assignments.jsp">Access Assignments</a>
-			</div>
-			</li>
-		<li class="nav-item">
-		<a class="nav-link" href="check_own_attendance.jsp">Attendance Report</a></li>
-		<li class="nav-item dropdown">
-		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Inquiry/Updation</a>
+				<a class="dropdown-item" href="students_announcement.jsp">Student
+					Announcement/Notification</a> <a class="dropdown-item"
+					href="selectexam.jsp">Student Available Test</a> <a
+					class="dropdown-item" href="noteslist.jsp">Access Study
+					Material</a> <a class="dropdown-item" href="students_assignments.jsp">Access
+					Assignments</a>
+			</div></li>
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbardrop" data-toggle="dropdown">Student Accounts
+				Section</a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="student_inquiry.jsp">Student Complaint/Any Updation</a> 
-				<a class="dropdown-item" href="complaint_issue_result.jsp">Complaint Or Issue Result</a>
-			</div>
-			</li>
+				<a class="dropdown-item" href="add_feeDetails.jsp">Update Paid
+					fee Details</a>
+			</div></li>
+		<li class="nav-item"><a class="nav-link"
+			href="check_own_attendance.jsp">Attendance Report</a></li>
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbardrop" data-toggle="dropdown">Inquiry/Updation</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="student_inquiry.jsp">Student
+					Complaint/Any Updation</a> <a class="dropdown-item"
+					href="complaint_issue_result.jsp">Complaint Or Issue Result</a>
+			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbardrop" data-toggle="dropdown">Projects Section</a>
 			<div class="dropdown-menu">

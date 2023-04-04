@@ -42,7 +42,7 @@ public class StudentLogin extends HttpServlet {
 			Connection con = DatabaseConnection.getConnection();
 			Statement st = con.createStatement();
 			ResultSet resultset = st.executeQuery(
-					"select student_id,uname,password,status,stud_name,mobile,email from students where uname='" + uname
+					"select student_id,uname,password,status,stud_name,mobile,email,branch from students where uname='" + uname
 							+ "' and password='" + hashedPassword + "' OR password='" + pass + "'");
 			if (resultset.next()) {
 				if (resultset.getInt(4) == 1) {
@@ -51,6 +51,7 @@ public class StudentLogin extends HttpServlet {
 					hs.setAttribute("StudentName", resultset.getString(5));
 					hs.setAttribute("StudentNumber", resultset.getString(6));
 					hs.setAttribute("StudentEmail", resultset.getString(7));
+					hs.setAttribute("Branch", resultset.getString(8));
 					response.sendRedirect("after_studentLogin.jsp");
 				} else {
 					String message = "Account not activated please inform admin to activate account.";
