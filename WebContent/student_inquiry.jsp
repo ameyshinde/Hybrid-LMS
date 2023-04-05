@@ -25,25 +25,26 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
 	<jsp:include page="student_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">Inquiry Or Updation / Student
-					Complaint</div>
+				<div class="alert alert-info shadow p-3 mb-5"
+					style="text-transform: uppercase">Inquiry Or Updation /
+					Student Complaint</div>
 				<%
-					String message = (String) session.getAttribute("inquiry-message");
-						if (message != null) {
-							session.removeAttribute("inquiry-message");
+				String message = (String) session.getAttribute("inquiry-message");
+				if (message != null) {
+					session.removeAttribute("inquiry-message");
 				%>
 				<div class='alert alert-success' id='success'>Inquiry or query
 					submitted successfully.</div>
 				<%
-					}
+				}
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
@@ -71,7 +72,8 @@
 														<div class="col-8">
 															<textarea id="message" name="message" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="4" cols="30" required></textarea>
+																rows="4" cols="30" required
+																oninput="validateInput(event)"></textarea>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -95,14 +97,20 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 </body>
 <script type="text/javascript">
 	$(function() {
 		$('#success').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

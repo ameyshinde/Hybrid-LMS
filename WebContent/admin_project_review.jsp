@@ -43,12 +43,18 @@
 	<%
 	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
-	<%String Tname = (String) session.getAttribute("TeacherName");
-	if(Tname == null){%>
+	<%
+	String uname = (String) session.getAttribute("uname");
+	if (uname != null && uname.equals("admin")) {
+	%>
 	<jsp:include page="admin_side_header.jsp"></jsp:include>
-	<%}else{ %>
+	<%
+	} else {
+	%>
 	<jsp:include page="faculty_side_header.jsp"></jsp:include>
-	<%} %>
+	<%
+	}
+	%>
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
@@ -99,8 +105,9 @@
 									<form action="update" method="post">
 										<fieldset class="form-group">
 											<div class="row">
-												<legend class="col-form-label col-sm-8 pt-10 text">Set
-													Project Status</legend>
+												<legend class="col-form-label col-sm-8 pt-10 text">
+													<strong>Set Project Status</strong>
+												</legend>
 												<div class="col-sm-16">
 
 													<div class="form-check">
@@ -132,17 +139,17 @@
 													to Student</label>
 												<textarea class="form-control mb-3"
 													id="exampleFormControlTextarea1" rows="3" name="feedback"
-													required></textarea>
+													required oninput="validateInput(event)"></textarea>
 											</div>
 										</fieldset>
 										<div class="form-group row">
 											<div class="col-sm-14">
-											&emsp;&emsp;
+												&emsp;&emsp;
 												<button type="submit" class="btn btn-primary">Update</button>
 												&emsp;&emsp;&emsp;&emsp;
 												<button type="reset" class="btn btn-warning">Clear</button>
-												&emsp;&emsp; 
-											<!--  	<a href="admin_projects_dashboard.jsp"><button
+												&emsp;&emsp;
+												<!--  	<a href="admin_projects_dashboard.jsp"><button
 														type="button" class="btn btn-danger">Cancel</button></a>-->
 											</div>
 										</div>
@@ -154,8 +161,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 	<%
 	} else {
@@ -183,5 +188,11 @@
 			}
 		}
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

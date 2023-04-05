@@ -197,7 +197,7 @@
 											<div class="form-group">
 												<label for="title">Title</label> <input type="text"
 													class="form-control" id="title" name="title"
-													placeholder="Title" required>
+													placeholder="Title" required oninput="validateInput(event)">
 											</div>
 									<!--  	<div class="form-group">
 												<label for="subject">Subject</label> <input type="text"
@@ -259,12 +259,12 @@
 											<div class="form-group">
 												<label for="title">Title</label> <input type="text"
 													class="form-control" id="title" name="title"
-													placeholder="Title" required>
+													placeholder="Title" required oninput="validateInput(event)">
 											</div>
 											<div class="form-group">
 												<label for="subject">Subject</label> <input type="text"
 													class="form-control" id="subject" name="subject"
-													placeholder="Subject" required>
+													placeholder="Subject" required oninput="validateInput(event)">
 											</div>
 											<div class="form-group">
 												<label for="year">Year</label> <input type="number"
@@ -359,5 +359,11 @@ jq(function() {
 	$(function() {
 		$('#danger').delay(4000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

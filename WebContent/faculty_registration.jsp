@@ -72,11 +72,13 @@
 								<div class="form-group col-md-6">
 									<label for="sname">Faculty Name:</label> <input type="text"
 										class="form-control" id="sname" name="tname"
+										oninput="validateInput(event)"
 										placeholder="Faculty Name" required>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="collegeName">Branch Name:</label> <input
 										type="text" class="form-control" id="collegeName"
+										oninput="validateInput(event)"
 										name="branchName" placeholder="Branch Name" required>
 								</div>
 							</div>
@@ -84,6 +86,7 @@
 								<div class="form-group col-md-6">
 									<label for="mobile">Mobile:</label> <input type="tel"
 										class="form-control" id="mobile" name="mobile" maxlength="10"
+										oninput="validateInput(event)"
 										title="Please use a 10 digit telephone number with no dashes or dots"
 										placeholder="Mobile No." required>
 								</div>
@@ -91,6 +94,7 @@
 								<div class="form-group col-md-6">
 									<label for="email">Email Id:</label> <input type="email"
 										class="form-control" id="email" name="email"
+										oninput="validateInput(event)"
 										placeholder="Email Id" required>
 								</div>
 							</div>
@@ -99,11 +103,13 @@
 								<div class="form-group col-md-6">
 									<label for="uname">User Name:</label> <input type="text"
 										class="form-control" id="uname" name="uname"
+										oninput="validateInput(event)"
 										placeholder="Users Name" required>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="pass">Temporary Password:</label> <input
 										type="password" class="form-control" id="pass" name="pass"
+										oninput="validateInput(event)"
 										placeholder="Password" required>
 								</div>
 							</div>
@@ -129,5 +135,11 @@
 	$(function() {
 		$('#danger').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

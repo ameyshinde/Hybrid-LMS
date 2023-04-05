@@ -102,7 +102,8 @@
 								<div class="form-group col-md-4">
 									<label for="subjectName">UTR NO.</label> <input type="text"
 										class="form-control" id="utr" name="utr"
-										placeholder="Enter UTR Number incase of UPI Payment" required>
+										placeholder="Enter UTR Number incase of UPI Payment" required
+										oninput="validateInput(event)">
 								</div>
 							</div>
 
@@ -150,7 +151,8 @@
 							<td><%=rs.getString(6)%></td>
 							<td><%=rs.getString(7)%></td>
 							<td><span class="label label-warning"><%=rs.getDate(8)%></span></td>
-							<td><a href="downloadFeeDetail?fileName=<%=rs.getString(7)%>">Download</a></td>
+							<td><a
+								href="downloadFeeDetail?fileName=<%=rs.getString(7)%>">Download</a></td>
 							<td><a href="DeleteFeeDetail?fileName=<%=rs.getString(7)%>"><button
 										class="btn btn-danger"
 										onClick="return confirm('Are you sure, you want to Delete this File?');">Delete</button></a></td>
@@ -177,5 +179,11 @@
 	$(function() {
 		$('#danger').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

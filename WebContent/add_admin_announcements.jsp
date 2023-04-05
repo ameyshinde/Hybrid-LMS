@@ -70,7 +70,8 @@
 														<div class="col-8">
 															<textarea id="subject" name="subject" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="1" cols="10" required></textarea>
+																rows="1" cols="10" required
+																oninput="validateInput(event)"></textarea>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -79,7 +80,8 @@
 														<div class="col-8">
 															<textarea id="notice" name="notice" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="4" cols="30" required></textarea>
+																rows="4" cols="30" required
+																oninput="validateInput(event)"></textarea>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -113,5 +115,11 @@
 	$(function() {
 		$('#success').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

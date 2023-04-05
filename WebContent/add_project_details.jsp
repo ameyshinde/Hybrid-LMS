@@ -63,13 +63,14 @@
 										</div>
 										<div class="row">
 
-											
+
 											<div class="container">
 												<form action="addnewproject" method="post">
 													<div class="input-group">
 														<label for="sname" class="mb-2 mr-sm-2">Project
 															Name:</label> <input id="pname" type="text" class="form-control"
-															name="ptitle" placeholder="Enter Project Name" required>
+															name="ptitle" placeholder="Enter Project Name" required
+															oninput="validateInput(event)">
 													</div>
 													<br>
 
@@ -85,8 +86,8 @@
 														</div>
 														<div class="form-check form-check-inline">
 															<input class="form-check-input" type="radio" name="type"
-																id="aiml" required value="Android Application"> <label
-																class="form-check-label" for="app">AI/Ml </label>
+																id="aiml" required value="Android Application">
+															<label class="form-check-label" for="app">AI/Ml </label>
 														</div>
 														<div class="form-check form-check-inline">
 															<input class="form-check-input" type="radio" name="type"
@@ -112,18 +113,20 @@
 														<label for="pabt" class="mb-2 mr-sm-2">Team
 															Members USN(S):</label> <input id="pabt" type="text"
 															class="form-control" name="team"
-															placeholder="Enter Team Members USN(S)" required>
+															placeholder="Enter Team Members USN(S)" required
+															oninput="validateInput(event)">
 													</div>
 													<br>
 
 													<div class="input-group">
 														<label for="pabt" class="mb-2 mr-sm-2">Project
 															Abstract:</label>
-														<textarea id="pabt" name="abs" placeholder="Enter Project Abstract"
-															class="form-control" type="textarea"  required value=""
-															rows="4" cols="30"></textarea>
+														<textarea id="pabt" name="abs"
+															placeholder="Enter Project Abstract" class="form-control"
+															type="textarea" required value="" rows="4" cols="30"
+															oninput="validateInput(event)"></textarea>
 
-														
+
 													</div>
 													<br>
 													<div>
@@ -158,5 +161,11 @@ response.sendRedirect("index.jsp");
 	$(function() {
 		$('#success').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

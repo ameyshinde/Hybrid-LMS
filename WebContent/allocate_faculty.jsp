@@ -73,7 +73,7 @@
 														<div class="col-4">
 															<input id="subname" type="text" class="form-control"
 																name="subjectName" placeholder="Enter Subject Name"
-																required>
+																required oninput="validateInput(event)">
 														</div>
 													</div>
 													<div class="form-group row">
@@ -82,7 +82,7 @@
 														<div class="col-4">
 															<input id="subcode" type="text" class="form-control"
 																name="subjectCode" placeholder="Enter Subject Code"
-																required>
+																required oninput="validateInput(event)">
 														</div>
 													</div>
 													<div class="form-group row">
@@ -90,8 +90,8 @@
 															Name </label>
 														<div class="col-6">
 															<select class="form-select form-select-lg mb-3"
-																aria-label=".form-select-lg example"
-																name="facultyName" required>
+																aria-label=".form-select-lg example" name="facultyName"
+																required>
 																<%
 																while (rs.next()) {
 																	String facultyname = rs.getString("teacher_name");
@@ -134,5 +134,11 @@
 	$(function() {
 		$('#success').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

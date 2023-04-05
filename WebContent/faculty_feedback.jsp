@@ -24,25 +24,34 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
+</script>
 </head>
-<body style="background-color:#F0F0F0";>
+<body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
 	<jsp:include page="faculty_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
-				<div class="alert alert-info shadow p-3 mb-5" style="text-transform: uppercase">Faculty Feedback</div>
+				<div class="alert alert-info shadow p-3 mb-5"
+					style="text-transform: uppercase">Faculty Feedback</div>
 				<%
-					String feedback = (String) session.getAttribute("faculty-feedback");
-						if (feedback != null) {
-							session.removeAttribute("faculty-feedback");
+				String feedback = (String) session.getAttribute("faculty-feedback");
+				if (feedback != null) {
+					session.removeAttribute("faculty-feedback");
 				%>
 				<div class='alert alert-success' id='success'>Feedback
 					submitted successfully.</div>
 				<%
-					}
+				}
 				%>
 				<div class="panel panel-primary shadow p-3 mb-5">
 					<div class="panel-heading bg-info text-white">
@@ -50,8 +59,7 @@
 					</div>
 					<div class="panel-body">
 						<img src="images/feedback.png" class="rounded" alt="Cinque Terre"
-							width="350" height="120"><br>
-						<br>
+							width="350" height="120"><br> <br>
 						<div class="row">
 							<div class="col-md-9">
 								<div class="card">
@@ -65,7 +73,7 @@
 										<div class="row">
 											<div class="col-md-12">
 												<form action="FacultyFeedback" method="post">
-												<!-- 	<div class="form-group row">
+													<!-- 	<div class="form-group row">
 														<label for="full_name" class="col-4 col-form-label">Full
 															Name </label>
 														<div class="col-8">
@@ -86,7 +94,8 @@
 														<div class="col-8">
 															<textarea id="message" name="message" placeholder=""
 																class="form-control here" type="textarea" value=""
-																rows="4" cols="30" required></textarea>
+																rows="4" cols="30" required
+																oninput="validateInput(event)"></textarea>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -110,9 +119,9 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 </body>
 <script type="text/javascript">

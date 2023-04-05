@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Base64;
@@ -40,10 +41,12 @@ public class TeacherLogin extends HttpServlet {
 		try {
 			HttpSession hs = request.getSession();
 			Connection con = DatabaseConnection.getConnection();
-			Statement st = con.createStatement();
-			ResultSet resultset = st.executeQuery(
-					"select teacher_id,uname,password,status,teacher_name,mobile,department,Subject,Subject_code from faculty where uname='"
-							+ uname + "' and password='" + hashedPassword + "' OR password='" + pass + "'");
+			PreparedStatement ps = con.prepareStatement(
+					"SELECT teacher_id, uname, password, status, teacher_name, mobile, department, Subject, Subject_code FROM faculty WHERE uname=? AND (password=? OR password=?)");
+			ps.setString(1, uname);
+			ps.setString(2, hashedPassword);
+			ps.setString(3, pass);
+			ResultSet resultset = ps.executeQuery();
 			if (resultset.next()) {
 				if (resultset.getInt(4) == 1) {
 					hs.setAttribute("uname", uname);
@@ -60,11 +63,10 @@ public class TeacherLogin extends HttpServlet {
 					response.sendRedirect("faculty_login.jsp");
 				}
 			} else {
-				String message = "You have enter wrong credentials";
+				String message = "You have entered wrong credentials";
 				hs.setAttribute("credential", message);
 				response.sendRedirect("faculty_login.jsp");
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

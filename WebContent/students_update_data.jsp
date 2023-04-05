@@ -57,28 +57,31 @@
 							</div>
 							<div class="form-group">
 								<label for="sname">Student Name:</label> <input type="text"
-									class="form-control" id="sname" name="sname"
+									class="form-control" id="sname" name="sname" oninput="validateInput(event)"
 									value="<%=resultSet.getString(2)%>">
 							</div>
 							<div class="form-group">
 								<label for="cname">College Name:</label> <input type="text"
-									class="form-control" id="cname" name="cname"
+									class="form-control" id="cname" name="cname" oninput="validateInput(event)"
 									value="<%=resultSet.getString(3)%>">
 							</div>
 							<div class="form-group">
 								<label for="mobile">Mobile:</label> <input type="tel"
 									class="form-control" id="mobile" name="mobile" maxlength="10"
 									title="Please use a 10 digit telephone number with no dashes or dots"
+									oninput="validateInput(event)"
 									value="<%=resultSet.getString(5)%>">
 							</div>
 							<div class="form-group">
 								<label for="address">Address:</label> <input type="text"
 									class="form-control" id="address" name="address"
+									oninput="validateInput(event)"
 									value="<%=resultSet.getString(6)%>">
 							</div>
 							<div class="form-group">
 								<label for="email">Email:</label> <input type="email"
 									class="form-control" id="email" name="email"
+									oninput="validateInput(event)"
 									value="<%=resultSet.getString(7)%>">
 							</div>
 							<input type="submit" class="btn btn-primary"
@@ -97,6 +100,13 @@
 	response.sendRedirect("index.jsp");
 	}
 	%>
-
 </body>
+<script>
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
+</script>
 </html>

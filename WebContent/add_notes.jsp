@@ -83,7 +83,7 @@
 								<div class="form-group col-md-4">
 									<label for="subjectName">Remark</label> <input type="text"
 										class="form-control" id="remark" name="remark"
-										placeholder="Add Remark for Upload" required>
+										placeholder="Add Remark for Upload" required oninput="validateInput(event)">
 								</div>
 							</div>
 							<div class="form-row">
@@ -208,5 +208,11 @@
 	$(function() {
 		$('#danger').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>

@@ -25,12 +25,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <styel> .space{ margin-left:50%; margin:50px; </styel>
-        <style type="text/css">
+<style type="text/css">
 .container {
 	width: 950px;
 	height: 440px;
-	padding-left:80px;
-	padding-top:40px;
+	padding-left: 80px;
+	padding-top: 40px;
 	background-color: rgba(52, 73, 94, 0.7);
 	border-radius: 4px;
 	margin: 0 auto;
@@ -50,13 +50,12 @@
 	cursor: pointer;
 	height: 40px;
 	width: 150px;
-	
 }
-.text{
-	color:#ffff80;
-	font-style:oblique;
-	font-size:1.2em;
-	
+
+.text {
+	color: #ffff80;
+	font-style: oblique;
+	font-size: 1.2em;
 }
 </style>
 </head>
@@ -109,83 +108,88 @@
 											</div>
 										</div>
 										<div class="container">
-										<div class="row">
-											<div class="col-md-12">
-												<form action="Quiz" method="post">
-													<div class="form-group row">
-														<label for="quiz_no" class="col-4 col-form-label"><b class="text">Question
-															Number </b></label>
-														<div class="col-4">
-															<input type="text" id="quiz_no" name="quiz_no"
-																placeholder="" class="form-control here" value=""></input>
+											<div class="row">
+												<div class="col-md-12">
+													<form action="Quiz" method="post">
+														<div class="form-group row">
+															<label for="quiz_no" class="col-4 col-form-label"><b
+																class="text">Question Number </b></label>
+															<div class="col-4">
+																<input type="number" id="quiz_no" name="quiz_no"
+																	placeholder="" class="form-control here" value=""></input>
+															</div>
 														</div>
-													</div>
-													<div class="form-group row">
-														<label for="question" class="col-4 col-form-label"><b class="text">QUESTION</b>
-														</label>
-														<div class="col-8">
-															<textarea id="question" name="question" placeholder=""
-																class="form-control here" type="textarea" value=""
-																rows="1" cols="10"></textarea>
+														<div class="form-group row">
+															<label for="question" class="col-4 col-form-label"><b
+																class="text">QUESTION</b> </label>
+															<div class="col-8">
+																<textarea id="question" name="question" placeholder=""
+																	class="form-control here" type="textarea" value=""
+																	rows="1" cols="10" oninput="validateInput(event)"></textarea>
+															</div>
 														</div>
-													</div>
-													<div class="form-group row">
-														<label for="option1" class="col-4 col-form-label"><b class="text">Option
-															A </b></label>
-														<div class="col-6">
-															<input type="text" id="option1" name="option1"
-																placeholder="" class="form-control here" value=""></input>
+														<div class="form-group row">
+															<label for="option1" class="col-4 col-form-label"><b
+																class="text">Option A </b></label>
+															<div class="col-6">
+																<input type="text" id="option1" name="option1"
+																	placeholder="" class="form-control here" value=""
+																	oninput="validateInput(event)"></input>
+															</div>
 														</div>
-													</div>
-													<div class="form-group row">
-														<label for="option2" class="col-4 col-form-label"><b class="text">Option
-															B </b></label>
-														<div class="col-6">
-															<input type="text" id="option2" name="option2"
-																placeholder="" class="form-control here" value=""></input>
+														<div class="form-group row">
+															<label for="option2" class="col-4 col-form-label"><b
+																class="text">Option B </b></label>
+															<div class="col-6">
+																<input type="text" id="option2" name="option2"
+																	placeholder="" class="form-control here" value=""
+																	oninput="validateInput(event)"></input>
+															</div>
 														</div>
-													</div>
-													<div class="form-group row">
-														<label for="option3" class="col-4 col-form-label"><b class="text">Option
-															C </b></label>
-														<div class="col-6">
-															<input type="text" id="option3" name="option3"
-																placeholder="" class="form-control here" value=""></input>
+														<div class="form-group row">
+															<label for="option3" class="col-4 col-form-label"><b
+																class="text">Option C </b></label>
+															<div class="col-6">
+																<input type="text" id="option3" name="option3"
+																	placeholder="" class="form-control here" value=""
+																	oninput="validateInput(event)"></input>
+															</div>
 														</div>
-													</div>
-													<div class="form-group row">
-														<label for="option4" class="col-4 col-form-label"><b class="text">Option
-															D </b></label>
-														<div class="col-6">
-															<input type="text" id="option4" name="option4"
-																placeholder="" class="form-control here" value=""></input>
+														<div class="form-group row">
+															<label for="option4" class="col-4 col-form-label"><b
+																class="text">Option D </b></label>
+															<div class="col-6">
+																<input type="text" id="option4" name="option4"
+																	placeholder="" class="form-control here" value=""
+																	oninput="validateInput(event)"></input>
+															</div>
 														</div>
-													</div>
-													<div class="form-group row">
-														<label for="correctAnswer" class="col-4 col-form-label"><b class="text">Correct
-															Answer </b></label>
-														<div class="col-8">
-															<div class="form-group row">
+														<div class="form-group row">
+															<label for="correctAnswer" class="col-4 col-form-label"><b
+																class="text">Correct Answer </b></label>
+															<div class="col-8">
+																<div class="form-group row">
 
-																<div class="col-9">
-																	<input type="text" id="correctAnswer"
-																		name="correctAnswer" placeholder=""
-																		class="form-control here" value=""></input>
+																	<div class="col-9">
+																		<input type="text" id="correctAnswer"
+																			name="correctAnswer" placeholder=""
+																			class="form-control here" value=""
+																			oninput="validateInput(event)"></input>
+																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-													<div class="form-group row">
-														<label for="notice" class="col-4 col-form-label"></label>
-														<div class="col-8">
-															<input type="submit" value="Add Quiz"
-																class="btn btn-primary">&emsp;&emsp; <input type="reset"
-																value="Reset" class="btn btn-danger">
+														<div class="form-group row">
+															<label for="notice" class="col-4 col-form-label"></label>
+															<div class="col-8">
+																<input type="submit" value="Add Quiz"
+																	class="btn btn-primary">&emsp;&emsp; <input
+																	type="reset" value="Reset" class="btn btn-danger">
+															</div>
 														</div>
-													</div>
-												</form>
+													</form>
+												</div>
 											</div>
-										</div>
 										</div>
 									</div>
 								</div>
@@ -206,6 +210,12 @@
 	$(function() {
 		$('#success').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>
 

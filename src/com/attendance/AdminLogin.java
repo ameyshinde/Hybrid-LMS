@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -42,19 +43,21 @@ public class AdminLogin extends HttpServlet {
 			String tokens = UUID.randomUUID().toString();
 			HttpSession hs = request.getSession();
 			Connection con = DatabaseConnection.getConnection();
-			Statement st = con.createStatement();
-			ResultSet resultset = st.executeQuery("select * from admin where uname='" + uname + "' AND password='"
-					+ pass + "' OR password='" + hashedPassword + "'");
+			PreparedStatement ps = con
+					.prepareStatement("SELECT * FROM admin WHERE uname=? AND (password=? OR password=?)");
+			ps.setString(1, uname);
+			ps.setString(2, pass);
+			ps.setString(3, hashedPassword);
+			ResultSet resultset = ps.executeQuery();
 			if (resultset.next()) {
 				hs.setAttribute("uname", uname);
 				hs.setAttribute("TeacherName", resultset.getString(2));
 				response.sendRedirect("after_adminLogin.jsp?_tokens='" + tokens + "'");
 			} else {
-				String message = "You have enter wrong credentials";
+				String message = "You have entered wrong credentials";
 				hs.setAttribute("credential", message);
 				response.sendRedirect("index.jsp");
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

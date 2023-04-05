@@ -72,12 +72,14 @@
 								<div class="form-group col-md-6">
 									<label for="sname">Student Name:</label> <input type="text"
 										class="form-control" id="sname" name="sname"
-										placeholder="Student Name" required>
+										placeholder="Student Name" required
+										oninput="validateInput(event)">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="collegeName">College Name:</label> <input
 										type="text" class="form-control" id="collegeName"
-										name="collegeName" placeholder="College Name" required>
+										name="collegeName" placeholder="College Name" required
+										oninput="validateInput(event)">
 								</div>
 							</div>
 							<div class="form-row">
@@ -90,13 +92,14 @@
 								<div class="form-group col-md-6">
 									<label for="collegeName">Branch Name:</label> <input
 										type="text" class="form-control" id="branchName"
-										name="branchName" placeholder="Branch Name" required>
+										name="branchName" placeholder="Branch Name" required
+										oninput="validateInput(event)">
 								</div>
 
 								<div class="form-group col-md-6">
 									<label for="email">Email Id:</label> <input type="email"
 										class="form-control" id="email" name="email"
-										placeholder="Email Id" required>
+										placeholder="Email Id" required oninput="validateInput(event)">
 								</div>
 							</div>
 
@@ -110,12 +113,13 @@
 								<div class="form-group col-md-6">
 									<label for="uname">User Name:</label> <input type="text"
 										class="form-control" id="uname" name="uname"
-										placeholder="Users Name" required>
+										placeholder="Users Name" required
+										oninput="validateInput(event)">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="pass">Temporary Password:</label> <input
 										type="password" class="form-control" id="pass" name="pass"
-										placeholder="Password" required>
+										placeholder="Password" required oninput="validateInput(event)">
 								</div>
 							</div>
 							<input type="submit" class="btn btn-primary" value="Register">
@@ -140,5 +144,11 @@
 	$(function() {
 		$('#danger').delay(5000).show().fadeOut('slow');
 	});
+	function validateInput(event) {
+		console.log("Warning,Stop Trying to use XSS attack!");
+		const input = event.target.value;
+		const safeInput = input.replace(/<script>/gi, '');
+		event.target.value = safeInput;
+	}
 </script>
 </html>
