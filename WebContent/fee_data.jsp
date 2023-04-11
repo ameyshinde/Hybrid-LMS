@@ -70,7 +70,7 @@
 										<th>UTR Number</th>
 										<th>File Name</th>
 										<th>Upload Date</th>
-										<th>Download</th>
+										<th>Receipt</th>
 										<th>Action</th>
 									</tr>
 								</thead>

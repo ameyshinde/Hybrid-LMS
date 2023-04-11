@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Student Attendance System</title>
+<title>Hybrid LMS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -35,7 +35,7 @@
 			resultset.next();
 			int count = resultset.getInt(1);
 	%>
-	<jsp:include page="faculty_side_header.jsp"></jsp:include>
+	<jsp:include page="admin_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="panel panel-default shadow p-3 mb-5">
 			<div class="panel-body">
@@ -61,9 +61,9 @@
 								<tr>
 									<th>Student Id</th>
 									<th>Student Name</th>
-									<th>Total Present Days</th>
-									<th>Total Absent Days</th>
-									<th>Total Days</th>
+									<th>Total Lectures Attended</th>
+									<th>Total Lectures Absent</th>
+									<th>Total Lectures</th>
 								</tr>
 							</thead>
 							<tbody>

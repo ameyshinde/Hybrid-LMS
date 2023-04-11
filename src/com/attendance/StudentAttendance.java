@@ -26,8 +26,10 @@ public class StudentAttendance extends HttpServlet {
 			Connection con = DatabaseConnection.getConnection();
 			Statement st = con.createStatement();
 			Statement alreadyTakenAttendance = con.createStatement();
+			String subject = (String) session.getAttribute("Subject");
 			ResultSet resultSet = alreadyTakenAttendance
-					.executeQuery("select student_id from student_attendance where system_date=CURDATE() ");
+					.executeQuery("select student_id from student_attendance where system_date=CURDATE() AND subject ='"
+							+ subject + "'");
 			if (resultSet.next()) {
 				String message = "Today's attendance already taken.";
 				session.setAttribute("todays-attendance-already-taken", message);
@@ -36,8 +38,9 @@ public class StudentAttendance extends HttpServlet {
 				ResultSet rs = st.executeQuery("select * from students where status=1");
 				while (rs.next()) {
 					Statement statement = con.createStatement();
-					attendance_insert = statement.executeUpdate("insert into student_attendance values('"
-							+ rs.getString(1) + "','" + request.getParameter(rs.getString(1)) + "',SYSDATE())");
+					attendance_insert = statement
+							.executeUpdate("INSERT INTO student_attendance VALUES ('" + rs.getString(1) + "','"
+									+ request.getParameter(rs.getString(1)) + "', SYSDATE(), '" + subject + "')");
 					statement.close();
 				}
 				if (attendance_insert > 0) {

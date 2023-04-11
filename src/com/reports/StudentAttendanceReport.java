@@ -162,15 +162,15 @@ public class StudentAttendanceReport extends HttpServlet {
 		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 		table.addCell(c1);
 
-		c1 = new PdfPCell(new Phrase("Total Present Days"));
+		c1 = new PdfPCell(new Phrase("Total Lectures Attended"));
 		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 		table.addCell(c1);
 
-		c1 = new PdfPCell(new Phrase("Total Absent Days"));
+		c1 = new PdfPCell(new Phrase("Total Lectures Absent"));
 		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 		table.addCell(c1);
 
-		c1 = new PdfPCell(new Phrase("Total Days"));
+		c1 = new PdfPCell(new Phrase("Total Lectures"));
 		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 		table.addCell(c1);
 

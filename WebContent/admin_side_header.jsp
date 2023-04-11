@@ -68,7 +68,15 @@
 			    <a class="dropdown-item" href="monthly_attendance_report.jsp">Monthly Attendance Report</a>
 			</div>
 		</li> -->
-
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbardrop" data-toggle="dropdown">Attendance
+				Reports</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="attendance_report.jsp">Attendance
+					Report</a> <a class="dropdown-item" href="check_daily_attendance.jsp">Daily
+					Attendance Report</a> <a class="dropdown-item"
+					href="monthly_attendance_report.jsp">Monthly Attendance Report</a>
+			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbardrop" data-toggle="dropdown">Leave Management</a>
 			<div class="dropdown-menu">

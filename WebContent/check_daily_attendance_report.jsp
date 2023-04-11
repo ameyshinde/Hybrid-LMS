@@ -28,13 +28,12 @@
 </head>
 <body style="background-color: #F0F0F0";>
 	<%
-		if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
+	if (session.getAttribute("uname") != null && session.getAttribute("uname") != "") {
 	%>
 	<%
-		ResultSet resultset = DatabaseConnection
-					.getResultFromSqlQuery("select count(*) from students where status=1");
-			resultset.next();
-			int count = resultset.getInt(1);
+	ResultSet resultset = DatabaseConnection.getResultFromSqlQuery("select count(*) from students where status=1");
+	resultset.next();
+	int count = resultset.getInt(1);
 	%>
 	<jsp:include page="faculty_side_header.jsp"></jsp:include>
 	<div class="container-fluid">
@@ -43,24 +42,24 @@
 				<div class="alert alert-info shadow p-3 mb-5"
 					style="text-transform: uppercase">Check Date Wise Attendance</div>
 				<%
-					String alreadyTaken = (String) session.getAttribute("todays-attendance-already-taken");
-						if (alreadyTaken != null) {
-							session.removeAttribute("todays-attendance-already-taken");
+				String alreadyTaken = (String) session.getAttribute("todays-attendance-already-taken");
+				if (alreadyTaken != null) {
+					session.removeAttribute("todays-attendance-already-taken");
 				%>
 				<div class="alert alert-danger" id='danger'>Today's attendance
 					already taken.</div>
 				<%
-					}
+				}
 				%>
 				<%
-					String attendanceTaken = (String) session.getAttribute("attendance-taken");
-						if (attendanceTaken != null) {
-							session.removeAttribute("attendance-taken");
+				String attendanceTaken = (String) session.getAttribute("attendance-taken");
+				if (attendanceTaken != null) {
+					session.removeAttribute("attendance-taken");
 				%>
 				<div class="alert alert-success" id='success'>Attendance taken
 					succesfully.</div>
 				<%
-					}
+				}
 				%>
 				<div class="panel panel shadow p-3 mb-5">
 					<div class="panel-heading bg-light"
@@ -93,15 +92,17 @@
 								</thead>
 								<tbody>
 									<%
-											String chooseDate = request.getParameter("date");
-											if (chooseDate != null) {
-												Connection con = DatabaseConnection.getConnection();
-												Statement st = con.createStatement();
-												ResultSet rs = st.executeQuery(
-														"select * from students natural join student_attendance where status=1 and system_date='"
-																+ chooseDate + "'");
-												while (rs.next()) {
-													int id = rs.getInt(1);
+									String chooseDate = request.getParameter("date");
+									String subject = (String) session.getAttribute("Subject");
+									if (chooseDate != null) {
+										Connection con = DatabaseConnection.getConnection();
+										Statement st = con.createStatement();
+										ResultSet rs = st
+										.executeQuery("SELECT * FROM students NATURAL JOIN student_attendance WHERE status=1 AND system_date = '"
+												+ chooseDate + "' AND subject = '" + subject + "'");
+
+										while (rs.next()) {
+											int id = rs.getInt(1);
 									%>
 									<tr>
 										<td><%=rs.getInt(1)%></td>
@@ -110,56 +111,56 @@
 										<td><%=rs.getString(6)%></td>
 										<td>
 											<%
-												if (rs.getString(10).equals("present")) {
+											if (rs.getString(11).equals("present")) {
 											%><input type="checkbox" name="<%=rs.getString(10)%>"
-											value="<%=rs.getString(10)%>" checked disabled>
+											value="<%=rs.getString(11)%>" checked disabled>
 										</td>
 										<%
-											} else {
+										} else {
 										%>
-										<input type="checkbox" name="<%=rs.getString(10)%>"
-											value="<%=rs.getString(10)%>" unchecked>
+										<input type="checkbox" name="<%=rs.getString(11)%>"
+											value="<%=rs.getString(11)%>" unchecked>
 										<%
-											}
+										}
 										%>
 										<td>
 											<%
-												if (rs.getString(10).equals("absent")) {
+											if (rs.getString(11).equals("absent")) {
 											%><input type="checkbox" name="<%=rs.getString(10)%>"
-											value="<%=rs.getString(10)%>" checked disabled>
+											value="<%=rs.getString(11)%>" checked disabled>
 										</td>
 									</tr>
 									<%
-										} else {
+									} else {
 									%>
-									<input type="checkbox" name="<%=rs.getString(10)%>"
-										value="<%=rs.getString(10)%>" unchecked>
+									<input type="checkbox" name="<%=rs.getString(11)%>"
+										value="<%=rs.getString(11)%>" unchecked>
 									<%
-										}
+									}
 
-												}
+									}
 									%>
 									<tr>
 										<td colspan="4"><strong><%=chooseDate%>&nbsp;Present
 												& Absent Students Attendance Details</strong></td>
 										<%
-											ResultSet presentResultset = DatabaseConnection.getResultFromSqlQuery(
-															"select count(*) from student_attendance where attendance='present' and system_date='"
-																	+ chooseDate + "'");
-													presentResultset.next();
-													int presentCount = presentResultset.getInt(1);
+										ResultSet presentResultset = DatabaseConnection.getResultFromSqlQuery(
+												"SELECT COUNT(*) FROM student_attendance WHERE attendance = 'present' AND system_date = '" + chooseDate
+												+ "' AND subject = '" + subject + "'");
+										presentResultset.next();
+										int presentCount = presentResultset.getInt(1);
 										%>
 										<td><span class="label label-success"><%=presentCount%>&nbsp;Present</span></td>
 										<%
-											ResultSet absentResultset = DatabaseConnection.getResultFromSqlQuery(
-															"select count(*) from student_attendance where attendance='absent' and system_date='"
-																	+ chooseDate + "'");
-													absentResultset.next();
-													int absentCount = absentResultset.getInt(1);
+										ResultSet absentResultset = DatabaseConnection
+												.getResultFromSqlQuery("select count(*) from student_attendance where attendance='absent' and system_date='"
+												+ chooseDate + "' AND subject = '" + subject + "'");
+										absentResultset.next();
+										int absentCount = absentResultset.getInt(1);
 										%>
 										<td><span class="label label-danger"><%=absentCount%>&nbsp;Absent</span></td>
 										<%
-											}
+										}
 										%>
 									</tr>
 								</tbody>
@@ -171,9 +172,9 @@
 		</div>
 	</div>
 	<%
-		} else {
-			response.sendRedirect("index.jsp");
-		}
+	} else {
+	response.sendRedirect("index.jsp");
+	}
 	%>
 </body>
 <script type="text/javascript">
