@@ -63,7 +63,7 @@
 										</div>
 										<div class="row">
 											<div class="col-md-12">
-												<form action="Announcements" method="post">
+												<form action="adminAnnouncements" method="post">
 													<div class="form-group row">
 														<label for="subject" class="col-4 col-form-label">Subject
 														</label>

@@ -70,7 +70,8 @@ public class AdminActions extends HttpServlet {
 			status = request.getParameter("status").toUpperCase();
 			String feedback = request.getParameter("feedback");
 			String tname = (String) session.getAttribute("TeacherName");
-			if (tname != null) {
+			System.out.println(tname);
+			if (tname != null && !tname.equals("admin")) {
 				if (dao.updateProject(id, status, feedback)) {
 					session.setAttribute("msg", "Project Updates Sent successfully");
 					response.sendRedirect("showspecificguidesprojects");
@@ -81,10 +82,10 @@ public class AdminActions extends HttpServlet {
 			} else {
 				if (dao.updateProject(id, status, feedback)) {
 					session.setAttribute("msg", "Project Updates Sent successfully");
-					response.sendRedirect("admin_projects_dashboard.jsp");
+					response.sendRedirect("showallprojects");
 				} else {
 					session.setAttribute("msg", "Something went wrong");
-					response.sendRedirect("admin_projects_dashboard.jsp");
+					response.sendRedirect("showallprojects");
 				}
 			}
 		} else if (url.endsWith("showallprojects")) {

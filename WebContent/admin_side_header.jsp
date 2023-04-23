@@ -76,6 +76,9 @@
 					Report</a> <a class="dropdown-item" href="check_daily_attendance.jsp">Daily
 					Attendance Report</a> <a class="dropdown-item"
 					href="monthly_attendance_report.jsp">Monthly Attendance Report</a>
+				<a class="dropdown-item"
+					href="https://docs.google.com/spreadsheets/d/1wNmdLuk3TllSyvLbyhSOsuCk95F89m9Z9ZupNHVzS3M/edit#gid=0">Biometric
+					Attendance Report</a>
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbardrop" data-toggle="dropdown">Leave Management</a>

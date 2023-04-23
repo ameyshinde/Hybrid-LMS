@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import com.attendance.DatabaseConnection;
 
-@WebServlet("/Announcements")
-public class Announcements extends HttpServlet{
+@WebServlet("/adminAnnouncements")
+public class Admin_Announcements extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int id = 0;
@@ -32,7 +32,7 @@ public class Announcements extends HttpServlet{
 			if (addnotice > 0) {
 				String sentnotice = "Notice sent sucess.";
 				session.setAttribute("notice-apply", sentnotice);
-				response.sendRedirect("add_announcements.jsp");
+				response.sendRedirect("add_admin_announcements.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

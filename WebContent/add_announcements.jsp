@@ -92,7 +92,6 @@
 																value="Reset" class="btn btn-danger">
 														</div>
 													</div>
-
 												</form>
 											</div>
 										</div>

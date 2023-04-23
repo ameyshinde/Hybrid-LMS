@@ -107,7 +107,7 @@
 									%>
 								</tbody>
 							</table>
-							<input type="submit" value="Take Attendance"
+							<input type="submit" value="Take Attendance" id="take-attendance"
 								class="btn btn-primary"> <input type="reset"
 								class="btn btn-danger" value="Clear">
 						</form>
@@ -130,18 +130,31 @@
 	$(function() {
 		$('#danger').delay(5000).show().fadeOut('slow');
 	});
+	$(document).ready(
+			function() {
+				var isAllPresentSelected = false;
+				$("#select-all-present").click(
+						function() {
+							if (isAllPresentSelected) {
+								$("input[type='radio'][value='present']").prop(
+										"checked", false);
+								isAllPresentSelected = false;
+							} else {
+								$("input[type='radio'][value='present']").prop(
+										"checked", true);
+								isAllPresentSelected = true;
+							}
+						});
+			});
 	$(document).ready(function() {
-	    var isAllPresentSelected = false;
-	    $("#select-all-present").click(function() {
-	        if (isAllPresentSelected) {
-	            $("input[type='radio'][value='present']").prop("checked", false);
-	            isAllPresentSelected = false;
-	        } else {
-	            $("input[type='radio'][value='present']").prop("checked", true);
-	            isAllPresentSelected = true;
-	        }
-	    });
-	});
-
+		  $("#take-attendance").click(function() {
+		    $("input[type='radio']").each(function() {
+		      var studentId = $(this).attr('name');
+		      if (!$("input[name='" + studentId + "']:checked").val()) {
+		        $("input[name='" + studentId + "'][value='absent']").prop('checked', true);
+		      }
+		    });
+		  });
+		});
 </script>
 </html>
